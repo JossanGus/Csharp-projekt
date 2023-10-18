@@ -36,11 +36,13 @@ namespace DAL.Repository
         public void Create(Podcast podcast)
         {
             podcastList.Add(podcast);
+            SaveChanges();
         }
 
         public void Delete(int index)
         {
             podcastList.RemoveAt(index);
+            SaveChanges();
         }
 
         public void Update(int index, Podcast podcast)
@@ -49,6 +51,8 @@ namespace DAL.Repository
             {
                 podcastList[index] = podcast;
             }
+
+            SaveChanges();
         }
 
         public void SaveChanges()
