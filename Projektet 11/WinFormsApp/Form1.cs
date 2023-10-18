@@ -23,9 +23,9 @@ namespace WinFormsApp
             lbShowCategorys.Items.Clear();
             cbCategory.Items.Clear();
 
-            foreach (var category in categoryList) 
+            foreach (var category in categoryList)
             {
-                if (categoryList != null) 
+                if (categoryList != null)
                 {
                     lbShowCategorys.Items.Add(category.Name);
                     cbCategory.Items.Add(category.Name);
