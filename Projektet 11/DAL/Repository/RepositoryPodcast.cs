@@ -12,12 +12,12 @@ namespace DAL.Repository
 {
     public class RepositoryPodcast : IRepository<Podcast>
     {
-        DataManager dataManager;
+        SerializerXML dataManager;
         List<Podcast> podcastList;
 
         public RepositoryPodcast()
         {
-            dataManager = new DataManager();
+            dataManager = new SerializerXML();
             podcastList = new List<Podcast>();
             podcastList = GetAll();
         }

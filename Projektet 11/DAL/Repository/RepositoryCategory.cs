@@ -9,12 +9,12 @@ namespace DAL.Repository
 {
     public class RepositoryCategory : IRepository<Category>
     {
-        DataManager dataManager;
+        SerializerXML dataManager;
         List<Category> categoryList;
 
         public RepositoryCategory()
         { 
-            dataManager = new DataManager();
+            dataManager = new SerializerXML();
             categoryList = new List<Category>();
             categoryList = GetAll();
         }
