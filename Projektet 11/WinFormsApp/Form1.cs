@@ -46,9 +46,9 @@ namespace WinFormsApp
             }
         }
 
-        private void btAddPod_Click(object sender, EventArgs e)
+        private async void btAddPod_Click(object sender, EventArgs e)
         {
-            await controllerPodcast.CreatePodcast(tbPodName.Text, tbURL.Text, tbTest.Text);
+            await controllerPodcast.CreatePodcast(tbPodName.Text, tbURL.Text, cbCategory.Text);
             fillPodView();
         }
 
