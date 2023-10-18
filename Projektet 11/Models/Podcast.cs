@@ -23,9 +23,7 @@ namespace Models
             EpisodeList = episodeList;
         }
 
-        public Podcast()
-        {
-
-        }
+        public Podcast() { }
+          
     }
 }

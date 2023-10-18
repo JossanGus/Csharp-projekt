@@ -43,15 +43,24 @@ namespace DAL
 
         public List<Category> DeserializeCategory()
         {
-            List<Category> returned;
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Category>));
-            using (FileStream fileStreamIn = new FileStream("Category.xml", FileMode.Open, FileAccess.Read))
+            try
             {
-                returned = (List<Category>)xmlSerializer.Deserialize(fileStreamIn);
+                List<Category> returned;
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Category>));
+                using (FileStream fileStreamIn = new FileStream("Category.xml", FileMode.Open, FileAccess.Read))
+                {
+                    returned = (List<Category>)xmlSerializer.Deserialize(fileStreamIn);
+                }
+
+                return returned;
             }
+            catch (Exception ex)
+            {
+                //throw new ExceptionSerializer("Category.xml", "Fungerar inte");
+                Console.WriteLine("Fel vid deserialisering: " + ex.Message);
 
-            return returned;
-
+                throw;
+            }
         }
 
 

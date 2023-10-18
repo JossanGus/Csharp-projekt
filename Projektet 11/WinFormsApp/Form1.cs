@@ -1,16 +1,36 @@
 using BLL;
 using Models;
+using DAL;
 
 namespace WinFormsApp
 {
     public partial class Form1 : Form
     {
         ControllerPodcast controllerPodcast;
+        ControllerCategory controllerCategory;
 
         public Form1()
         {
             InitializeComponent();
             controllerPodcast = new ControllerPodcast();
+            controllerCategory = new ControllerCategory();
+            fillCategory();
+        }
+
+        private void fillCategory()
+        {
+            var categoryList = controllerCategory.GetAll();
+            lbShowCategorys.Items.Clear();
+            cbCategory.Items.Clear();
+
+            foreach (var category in categoryList) 
+            {
+                if (categoryList != null) 
+                {
+                    lbShowCategorys.Items.Add(category.Name);
+                    cbCategory.Items.Add(category.Name);
+                }
+            }
         }
 
         public void fillPodcast()
@@ -55,6 +75,20 @@ namespace WinFormsApp
         private void lvPodInfo_SelectedIndexChanged(object sender, EventArgs e)
         {
             fillPodcast();
+        }
+
+        private void btAddCategory_Click(object sender, EventArgs e)
+        {
+            string Name = tbCategory.Text;
+
+            Category category = new Category(Name);
+            controllerCategory.CreateCategory(category);
+
+            tbCategory.Clear();
+
+            controllerCategory.GetAll();
+            fillCategory();
+
         }
     }
 }
