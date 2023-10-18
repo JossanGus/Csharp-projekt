@@ -33,7 +33,7 @@ namespace WinFormsApp
             }
         }
 
-        public void fillPodcast()
+        public void fillEpisodeBox()
         {
             var thePod = lvPodInfo.SelectedItems[0].Text;
             if (lvPodInfo.SelectedItems.Count == 1)
@@ -59,6 +59,7 @@ namespace WinFormsApp
                 if (podcastList != null)
                 {
                     ListViewItem list = new ListViewItem(pod.Name);
+                    list.SubItems.Add(pod.Category);
                     lvPodInfo.Items.Add(list);
 
                     lvPodInfo.Refresh();
@@ -74,7 +75,7 @@ namespace WinFormsApp
 
         private void lvPodInfo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            fillPodcast();
+            fillEpisodeBox();
         }
 
         private void btAddCategory_Click(object sender, EventArgs e)

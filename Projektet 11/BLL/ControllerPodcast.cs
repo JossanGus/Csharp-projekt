@@ -25,8 +25,8 @@ namespace BLL
             Podcast pod = new Podcast();
             await Task.Run(async () =>
             {
-                //Podcast podcast = new Podcast(name, url, category);
-                //repositoryPodcast.Create(podcast); 
+                Podcast podcast = new Podcast(name, url, category);
+                repositoryPodcast.Create(podcast);
             });
 
             return pod;
