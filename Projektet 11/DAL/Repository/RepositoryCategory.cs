@@ -47,7 +47,7 @@ namespace DAL.Repository
 
         public void Update(int index, Category category)
         { 
-            if (index >=0)
+            if (index >= 0)
             {
                 categoryList[index] = category;
             }
