@@ -19,14 +19,14 @@ namespace DAL.Repository
             categoryList = GetAll();
         }
         public List<Category> GetAll()
-        { 
+        {
             List<Category> categoryList = new List<Category>();
 
             try
             {
                 categoryList = dataManager.DeserializeCategory();
             }
-            catch (ExceptionSerializer ex) 
+            catch (ExceptionSerializer ex)
             {
                 Console.WriteLine(ex.Message + "Finns ingen lista");
             }
@@ -64,5 +64,6 @@ namespace DAL.Repository
         {
             dataManager.SerializeCategory(categoryList);
         }
+
     }
 }
