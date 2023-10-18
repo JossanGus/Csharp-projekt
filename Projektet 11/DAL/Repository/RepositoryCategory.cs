@@ -26,9 +26,9 @@ namespace DAL.Repository
             {
                 categoryList = dataManager.DeserializeCategory();
             }
-            catch (ExceptionSerializer ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message + "Finns ingen lista");
+                
             }
             return categoryList;
         }
