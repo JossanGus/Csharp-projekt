@@ -1,6 +1,7 @@
 using BLL;
 using Models;
 using DAL;
+using System.Windows.Forms;
 
 namespace WinFormsApp
 {
@@ -57,7 +58,7 @@ namespace WinFormsApp
         private void fillPodView()
         {
             var podcastList = controllerPodcast.GetAll();
-
+            lvPodInfo.Items.Clear();
             foreach (var pod in podcastList)
             {
                 if (podcastList != null)
@@ -160,24 +161,34 @@ namespace WinFormsApp
         }
 
         private void btDeletePod_Click(object sender, EventArgs e)
-        { 
+        {
             try
             {
-                for(int i = lvPodInfo.SelectedItems.Count - 1; i >= 0; i--)
+                for (int i = lvPodInfo.SelectedItems.Count - 1; i >= 0; i--)
                 {
                     controllerPodcast.DeletePodcast(thePod);
                     fillPodView();
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
                 throw;
             }
 
         }
 
-
-
+        private void btDeleteCategory_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                controllerCategory.DeleteCategory(lbShowCategorys.SelectedItem.ToString());
+                fillCategory();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 
 }
