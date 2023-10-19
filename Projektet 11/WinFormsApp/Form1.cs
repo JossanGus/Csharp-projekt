@@ -168,6 +168,7 @@ namespace WinFormsApp
                 {
                     controllerPodcast.DeletePodcast(thePod);
                     fillPodView();
+                    clearAllFields();   
                 }
             }
             catch (Exception)

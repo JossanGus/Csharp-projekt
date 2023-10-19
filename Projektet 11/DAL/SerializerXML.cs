@@ -87,15 +87,15 @@ namespace DAL
             try
             {
                 List<Episode> returned;
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Episode>));
-            using (FileStream fileStreamIn = new FileStream("Episodes.xml", FileMode.Open, FileAccess.Read))
-            {
-                returned = (List<Episode>)xmlSerializer.Deserialize(fileStreamIn);
-            }
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Episode>));
+                using (FileStream fileStreamIn = new FileStream("Episodes.xml", FileMode.Open, FileAccess.Read))
+                {
+                    returned = (List<Episode>)xmlSerializer.Deserialize(fileStreamIn);
+                }
 
-            return returned;
+                return returned;
             }
-            catch(Exception)
+            catch (Exception)
             {
                 throw;
             }
