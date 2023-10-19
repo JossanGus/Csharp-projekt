@@ -9,6 +9,8 @@ namespace WinFormsApp
         ControllerPodcast controllerPodcast;
         ControllerCategory controllerCategory;
 
+        //string thePod;
+
         public Form1()
         {
             InitializeComponent();
@@ -85,8 +87,26 @@ namespace WinFormsApp
 
         private void lvPodInfo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            fillEpisodeBox();
+
+            lbPodEpisode.Items.Clear();
+            if (lvPodInfo.SelectedItems.Count == 1)
+            {
+                var thePod = lvPodInfo.SelectedItems[0].Text;
+
+                foreach (Podcast pod in controllerPodcast.GetAll())
+                {
+                    if (pod.Name.Equals(thePod))
+                    {
+                        foreach (Episode episode in pod.EpisodeList)
+                        {
+                            lbPodEpisode.Items.Add(episode.Name);
+                            fillEpisodeBox();
+                        }
+                    }
+                }
+            }
         }
+
 
         private void btAddCategory_Click(object sender, EventArgs e)
         {
@@ -101,5 +121,11 @@ namespace WinFormsApp
             fillCategory();
 
         }
+
+        private void lbPodEpisode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbEpisodeInfo.SelectedItems.Count == 1)
+        }
+
     }
 }
