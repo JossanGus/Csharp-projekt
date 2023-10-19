@@ -38,6 +38,12 @@ namespace BLL
             return pod;
         }
 
+        public void DeletePodcast(string name)
+        {
+            int index = repositoryPodcast.GetIndex(name);
+            repositoryPodcast.Delete(index);
+        }
+
     }
 
 }

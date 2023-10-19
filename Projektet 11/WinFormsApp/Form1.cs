@@ -9,7 +9,8 @@ namespace WinFormsApp
         ControllerPodcast controllerPodcast;
         ControllerCategory controllerCategory;
 
-        //string thePod;
+        string thePod;
+
 
         public Form1()
         {
@@ -56,7 +57,7 @@ namespace WinFormsApp
         private void fillPodView()
         {
             var podcastList = controllerPodcast.GetAll();
-            lvPodInfo.Items.Clear();
+
             foreach (var pod in podcastList)
             {
                 if (podcastList != null)
@@ -74,10 +75,12 @@ namespace WinFormsApp
 
         private async void btAddPod_Click(object sender, EventArgs e)
         {
+
             try
             {
                 await controllerPodcast.CreatePodcast(tbPodName.Text, tbURL.Text, cbCategory.Text);
                 fillPodView();
+                clearAllFields();
             }
             catch (Exception)
             {
@@ -92,7 +95,7 @@ namespace WinFormsApp
             tbEpisodeInfo.Clear();
             if (lvPodInfo.SelectedItems.Count == 1)
             {
-                var thePod = lvPodInfo.SelectedItems[0].Text;
+                thePod = lvPodInfo.SelectedItems[0].Text;
 
                 foreach (Podcast pod in controllerPodcast.GetAll())
                 {
@@ -102,10 +105,14 @@ namespace WinFormsApp
                         {
                             lbPodEpisode.Items.Add(episode.Name);
                             fillEpisodeBox();
+
                         }
                     }
                 }
+
             }
+
+
         }
 
 
@@ -141,11 +148,36 @@ namespace WinFormsApp
 
                 }
             }
+        }
 
+        private void clearAllFields()
+        {
+            tbPodName.Clear();
+            cbCategory.Text = "Välj Kategori";
+            tbURL.Clear();
+            tbEpisodeInfo.Clear();
+            lbPodEpisode.Items.Clear();
+        }
 
-
+        private void btDeletePod_Click(object sender, EventArgs e)
+        { 
+            try
+            {
+                for(int i = lvPodInfo.SelectedItems.Count - 1; i >= 0; i--)
+                {
+                    controllerPodcast.DeletePodcast(thePod);
+                    fillPodView();
+                }
+            }
+            catch(Exception)
+            {
+                throw;
+            }
 
         }
 
+
+
     }
+
 }

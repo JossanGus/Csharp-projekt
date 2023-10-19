@@ -250,6 +250,7 @@
             btDeletePod.TabIndex = 18;
             btDeletePod.Text = "Ta bort pod";
             btDeletePod.UseVisualStyleBackColor = true;
+            btDeletePod.Click += btDeletePod_Click;
             // 
             // cbCategoryFilter
             // 
