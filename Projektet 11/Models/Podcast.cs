@@ -15,12 +15,12 @@ namespace Models
 
         public List<Episode> EpisodeList { get; set; }
 
-        public Podcast(string name, string url, string category /*List<Episodes> episodeList*/)
+        public Podcast(string name, string url, string category, List<Episode> episodeList)
         {
             Name = name;
             Url = url;
             Category = category;
-            //EpisodeList = episodeList;
+            EpisodeList = episodeList;
         }
 
         public Podcast() { }

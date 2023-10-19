@@ -71,7 +71,7 @@
             label1.Location = new Point(78, 124);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(108, 24);
+            label1.Size = new Size(142, 33);
             label1.TabIndex = 1;
             label1.Text = "Poddnamn:";
             // 
@@ -80,7 +80,7 @@
             tbPodName.Location = new Point(58, 161);
             tbPodName.Margin = new Padding(2, 3, 2, 3);
             tbPodName.Name = "tbPodName";
-            tbPodName.Size = new Size(151, 32);
+            tbPodName.Size = new Size(151, 40);
             tbPodName.TabIndex = 2;
             // 
             // cbCategory
@@ -89,7 +89,7 @@
             cbCategory.Location = new Point(229, 159);
             cbCategory.Margin = new Padding(2, 3, 2, 3);
             cbCategory.Name = "cbCategory";
-            cbCategory.Size = new Size(182, 32);
+            cbCategory.Size = new Size(182, 41);
             cbCategory.TabIndex = 3;
             cbCategory.Text = "Välj kategori";
             // 
@@ -99,7 +99,7 @@
             label2.Location = new Point(470, 124);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(116, 24);
+            label2.Size = new Size(158, 33);
             label2.TabIndex = 4;
             label2.Text = "Lägg till URL:";
             // 
@@ -108,7 +108,7 @@
             tbURL.Location = new Point(450, 161);
             tbURL.Margin = new Padding(2, 3, 2, 3);
             tbURL.Name = "tbURL";
-            tbURL.Size = new Size(151, 32);
+            tbURL.Size = new Size(151, 40);
             tbURL.TabIndex = 5;
             // 
             // label3
@@ -117,7 +117,7 @@
             label3.Location = new Point(120, 519);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(116, 24);
+            label3.Size = new Size(155, 33);
             label3.TabIndex = 6;
             label3.Text = "Poddavsnitt:";
             // 
@@ -127,13 +127,13 @@
             label4.Location = new Point(401, 519);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(178, 24);
+            label4.Size = new Size(241, 33);
             label4.TabIndex = 7;
             label4.Text = "Avsnittsbeskrivning:";
             // 
             // lvPodInfo
             // 
-            lvPodInfo.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader4 });
+            lvPodInfo.Columns.AddRange(new ColumnHeader[] { columnHeader2, columnHeader4, columnHeader1 });
             lvPodInfo.Location = new Point(47, 225);
             lvPodInfo.Margin = new Padding(2, 3, 2, 3);
             lvPodInfo.Name = "lvPodInfo";
@@ -145,37 +145,40 @@
             // 
             // columnHeader1
             // 
+            columnHeader1.DisplayIndex = 0;
             columnHeader1.Text = "Antal avsnitt";
             columnHeader1.Width = 150;
             // 
             // columnHeader2
             // 
+            columnHeader2.DisplayIndex = 1;
             columnHeader2.Text = "Namn";
             columnHeader2.Width = 100;
             // 
             // columnHeader4
             // 
+            columnHeader4.DisplayIndex = 2;
             columnHeader4.Text = "Kategori";
             columnHeader4.Width = 100;
             // 
             // lbPodEpisode
             // 
             lbPodEpisode.FormattingEnabled = true;
-            lbPodEpisode.ItemHeight = 24;
+            lbPodEpisode.ItemHeight = 33;
             lbPodEpisode.Location = new Point(58, 569);
             lbPodEpisode.Margin = new Padding(2, 3, 2, 3);
             lbPodEpisode.Name = "lbPodEpisode";
-            lbPodEpisode.Size = new Size(257, 196);
+            lbPodEpisode.Size = new Size(257, 169);
             lbPodEpisode.TabIndex = 9;
             // 
             // lbEpisodeInfo
             // 
             lbEpisodeInfo.FormattingEnabled = true;
-            lbEpisodeInfo.ItemHeight = 24;
+            lbEpisodeInfo.ItemHeight = 33;
             lbEpisodeInfo.Location = new Point(358, 569);
             lbEpisodeInfo.Margin = new Padding(2, 3, 2, 3);
             lbEpisodeInfo.Name = "lbEpisodeInfo";
-            lbEpisodeInfo.Size = new Size(266, 196);
+            lbEpisodeInfo.Size = new Size(266, 169);
             lbEpisodeInfo.TabIndex = 10;
             // 
             // label5
@@ -184,7 +187,7 @@
             label5.Location = new Point(762, 237);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(178, 24);
+            label5.Size = new Size(241, 33);
             label5.TabIndex = 11;
             label5.Text = "Lägg till ny kategori:";
             // 
@@ -193,7 +196,7 @@
             tbCategory.Location = new Point(774, 277);
             tbCategory.Margin = new Padding(2, 3, 2, 3);
             tbCategory.Name = "tbCategory";
-            tbCategory.Size = new Size(151, 32);
+            tbCategory.Size = new Size(151, 40);
             tbCategory.TabIndex = 12;
             // 
             // btAddCategory
@@ -210,11 +213,11 @@
             // lbShowCategorys
             // 
             lbShowCategorys.FormattingEnabled = true;
-            lbShowCategorys.ItemHeight = 24;
+            lbShowCategorys.ItemHeight = 33;
             lbShowCategorys.Location = new Point(762, 321);
             lbShowCategorys.Margin = new Padding(2, 3, 2, 3);
             lbShowCategorys.Name = "lbShowCategorys";
-            lbShowCategorys.Size = new Size(181, 124);
+            lbShowCategorys.Size = new Size(181, 103);
             lbShowCategorys.TabIndex = 14;
             // 
             // btChangeCategory
@@ -263,7 +266,7 @@
             cbCategoryFilter.Location = new Point(218, 117);
             cbCategoryFilter.Margin = new Padding(2, 3, 2, 3);
             cbCategoryFilter.Name = "cbCategoryFilter";
-            cbCategoryFilter.Size = new Size(217, 32);
+            cbCategoryFilter.Size = new Size(217, 41);
             cbCategoryFilter.TabIndex = 19;
             cbCategoryFilter.Text = "Filtrera poddkategori";
             // 
@@ -274,13 +277,13 @@
             label6.Location = new Point(576, 17);
             label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(210, 39);
+            label6.Size = new Size(283, 53);
             label6.TabIndex = 20;
             label6.Text = "Mina podcasts";
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(10F, 24F);
+            AutoScaleDimensions = new SizeF(14F, 33F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientActiveCaption;
             ClientSize = new Size(1322, 801);

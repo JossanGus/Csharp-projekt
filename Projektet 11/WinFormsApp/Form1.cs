@@ -15,6 +15,7 @@ namespace WinFormsApp
             controllerPodcast = new ControllerPodcast();
             controllerCategory = new ControllerCategory();
             fillCategory();
+            fillPodView();
         }
 
         private void fillCategory()
@@ -58,8 +59,10 @@ namespace WinFormsApp
             {
                 if (podcastList != null)
                 {
+                    string countEpisodes = pod.EpisodeList.Count.ToString();
                     ListViewItem list = new ListViewItem(pod.Name);
                     list.SubItems.Add(pod.Category);
+                    list.SubItems.Add(countEpisodes);
                     lvPodInfo.Items.Add(list);
 
                     lvPodInfo.Refresh();
@@ -69,8 +72,15 @@ namespace WinFormsApp
 
         private async void btAddPod_Click(object sender, EventArgs e)
         {
-            await controllerPodcast.CreatePodcast(tbPodName.Text, tbURL.Text, cbCategory.Text);
-            fillPodView();
+            try
+            {
+                await controllerPodcast.CreatePodcast(tbPodName.Text, tbURL.Text, cbCategory.Text);
+                fillPodView();
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private void lvPodInfo_SelectedIndexChanged(object sender, EventArgs e)

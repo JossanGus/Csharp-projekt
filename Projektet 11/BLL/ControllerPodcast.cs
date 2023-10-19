@@ -6,13 +6,17 @@ namespace BLL
     public class ControllerPodcast
     {
         RepositoryPodcast repositoryPodcast;
+        RepositoryEpisode repositoryEpisode;
         List<Podcast> podcastList;
 
 
         public ControllerPodcast()
         {
             repositoryPodcast = new RepositoryPodcast();
+            repositoryEpisode = new RepositoryEpisode();
             podcastList = repositoryPodcast.GetAll();
+
+
         }
 
         public List<Podcast> GetAll()
@@ -25,7 +29,9 @@ namespace BLL
             Podcast pod = new Podcast();
             await Task.Run(async () =>
             {
-                Podcast podcast = new Podcast(name, url, category);
+                List<Episode> episodeList = await repositoryEpisode.AllEpisodes(url);
+
+                Podcast podcast = new Podcast(name, url, category, episodeList);
                 repositoryPodcast.Create(podcast);
             });
 

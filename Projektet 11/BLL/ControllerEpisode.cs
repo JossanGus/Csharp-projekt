@@ -8,12 +8,12 @@ using DAL.Repository;
 
 namespace BLL
 {
-    public class ControllerEpisodes
+    public class ControllerEpisode
     {
         IGetEpisode<Episode> repositoryEpisode;
 
 
-        public ControllerEpisodes()
+        public ControllerEpisode()
         { 
             repositoryEpisode = new RepositoryEpisode();
         }

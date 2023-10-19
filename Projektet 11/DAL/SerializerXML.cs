@@ -19,7 +19,9 @@ namespace DAL
 
         public List<Podcast> DeserializePodcast()
         {
-            List<Podcast> returned;
+            try
+            {
+                List<Podcast> returned;
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Podcast>));
             using (FileStream fileStreamIn = new FileStream("Podcast.xml", FileMode.Open, FileAccess.Read))
             {
@@ -27,6 +29,11 @@ namespace DAL
             }
 
             return returned;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
 
         }
 
@@ -65,7 +72,7 @@ namespace DAL
 
 
 
-        public void SerializeEpisodes(List<Episode> items)
+        public void SerializeEpisode(List<Episode> items)
         {
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Episode>));
             using (FileStream fileStreamOut = new FileStream("Episodes.xml", FileMode.Create, FileAccess.Write))
@@ -77,7 +84,9 @@ namespace DAL
 
         public List<Episode> DeserializeEpisodes()
         {
-            List<Episode> returned;
+            try
+            {
+                List<Episode> returned;
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Episode>));
             using (FileStream fileStreamIn = new FileStream("Episodes.xml", FileMode.Open, FileAccess.Read))
             {
@@ -85,6 +94,11 @@ namespace DAL
             }
 
             return returned;
+            }
+            catch(Exception)
+            {
+                throw;
+            }
 
         }
 

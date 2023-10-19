@@ -32,8 +32,8 @@ namespace DAL.Repository
             foreach (var item in feed.Items) 
             { 
                 Episode episode = new Episode();
-                episode.Name = item.Name.Text;
-                episode.Description = item.Description.Text;
+                episode.Name = item.Title.Text;
+                episode.Description = item.Summary.Text;
                 
                 episodeList.Add(episode);
             }
@@ -51,7 +51,7 @@ namespace DAL.Repository
 
         public void SaveChanges()
         {
-            dataManager.SerializeEpisodes(episodeList);
+            dataManager.SerializeEpisode(episodeList);
         }
 
     }
