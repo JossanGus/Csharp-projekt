@@ -89,6 +89,7 @@ namespace WinFormsApp
         {
 
             lbPodEpisode.Items.Clear();
+            tbEpisodeInfo.Clear();
             if (lvPodInfo.SelectedItems.Count == 1)
             {
                 var thePod = lvPodInfo.SelectedItems[0].Text;
@@ -124,7 +125,26 @@ namespace WinFormsApp
 
         private void lbPodEpisode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lbEpisodeInfo.SelectedItems.Count == 1)
+            if (lbPodEpisode.SelectedItems.Count == 1)
+            {
+                var theEpisode = lbPodEpisode.SelectedItems[0];
+
+                foreach (var pod in controllerPodcast.GetAll())
+                {
+                    foreach (var episode in pod.EpisodeList)
+                    {
+                        if (episode.Name.Equals(theEpisode))
+                        {
+                            tbEpisodeInfo.Text = episode.Description;
+                        }
+                    }
+
+                }
+            }
+
+
+
+
         }
 
     }
