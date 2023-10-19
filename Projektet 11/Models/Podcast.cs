@@ -13,7 +13,7 @@ namespace Models
         public string Category { get; set; }
 
 
-        public List<Episodes> EpisodeList { get; set; }
+        public List<Episode> EpisodeList { get; set; }
 
         public Podcast(string name, string url, string category /*List<Episodes> episodeList*/)
         {

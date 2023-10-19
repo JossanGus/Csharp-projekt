@@ -31,6 +31,16 @@ namespace DAL.Repository
         {
             List<Podcast> podcastList = new List<Podcast>();
 
+            try
+            {
+                podcastList = dataManager.DeserializePodcast();
+            }
+
+            catch (Exception)
+            { 
+            
+            }
+
             return podcastList;
         }
         public void Create(Podcast podcast)

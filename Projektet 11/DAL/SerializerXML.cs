@@ -65,9 +65,9 @@ namespace DAL
 
 
 
-        public void SerializeEpisodes(List<Episodes> items)
+        public void SerializeEpisodes(List<Episode> items)
         {
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Episodes>));
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Episode>));
             using (FileStream fileStreamOut = new FileStream("Episodes.xml", FileMode.Create, FileAccess.Write))
             {
                 xmlSerializer.Serialize(fileStreamOut, items);
@@ -75,13 +75,13 @@ namespace DAL
 
         }
 
-        public List<Episodes> DeserializeEpisodes()
+        public List<Episode> DeserializeEpisodes()
         {
-            List<Episodes> returned;
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Episodes>));
+            List<Episode> returned;
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Episode>));
             using (FileStream fileStreamIn = new FileStream("Episodes.xml", FileMode.Open, FileAccess.Read))
             {
-                returned = (List<Episodes>)xmlSerializer.Deserialize(fileStreamIn);
+                returned = (List<Episode>)xmlSerializer.Deserialize(fileStreamIn);
             }
 
             return returned;
