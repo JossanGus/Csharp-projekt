@@ -40,19 +40,19 @@ namespace DAL.Repository
             return episodeList;
         }
 
-        public void Update(int index, Episode episode)
-        {
-            if (index >= 0)
-            {
-                episodeList[index] = episode;
-            }
-            SaveChanges();
-        }
+        //public void Update(int index, Episode episode)
+        //{
+        //    if (index >= 0)
+        //    {
+        //        episodeList[index] = episode;
+        //    }
+        //    SaveChanges();
+        //}
 
-        public void SaveChanges()
-        {
-            dataManager.SerializeEpisode(episodeList);
-        }
+        //public void SaveChanges()
+        //{
+        //    dataManager.SerializeEpisode(episodeList);
+        //}
 
     }
 }

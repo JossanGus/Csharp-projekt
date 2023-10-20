@@ -72,35 +72,35 @@ namespace DAL
 
 
 
-        public void SerializeEpisode(List<Episode> items)
-        {
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Episode>));
-            using (FileStream fileStreamOut = new FileStream("Episodes.xml", FileMode.Create, FileAccess.Write))
-            {
-                xmlSerializer.Serialize(fileStreamOut, items);
-            }
+        //public void SerializeEpisode(List<Episode> items)
+        //{
+        //    XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Episode>));
+        //    using (FileStream fileStreamOut = new FileStream("Episodes.xml", FileMode.Create, FileAccess.Write))
+        //    {
+        //        xmlSerializer.Serialize(fileStreamOut, items);
+        //    }
 
-        }
+        //}
 
-        public List<Episode> DeserializeEpisodes()
-        {
-            try
-            {
-                List<Episode> returned;
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Episode>));
-                using (FileStream fileStreamIn = new FileStream("Episodes.xml", FileMode.Open, FileAccess.Read))
-                {
-                    returned = (List<Episode>)xmlSerializer.Deserialize(fileStreamIn);
-                }
+        //public List<Episode> DeserializeEpisodes()
+        //{
+        //    try
+        //    {
+        //        List<Episode> returned;
+        //        XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Episode>));
+        //        using (FileStream fileStreamIn = new FileStream("Episodes.xml", FileMode.Open, FileAccess.Read))
+        //        {
+        //            returned = (List<Episode>)xmlSerializer.Deserialize(fileStreamIn);
+        //        }
 
-                return returned;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+        //        return returned;
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
 
-        }
+        //}
 
     }
 }
