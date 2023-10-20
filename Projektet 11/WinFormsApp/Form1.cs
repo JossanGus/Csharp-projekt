@@ -195,6 +195,7 @@ namespace WinFormsApp
                     }
                 }
 
+
                 controllerCategory.DeleteCategory(lbShowCategorys.SelectedItem.ToString());
                 FillCategory();
 
