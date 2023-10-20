@@ -18,11 +18,11 @@ namespace WinFormsApp
             InitializeComponent();
             controllerPodcast = new ControllerPodcast();
             controllerCategory = new ControllerCategory();
-            fillCategory();
-            fillPodView();
+            FillCategory();
+            FillPodView();
         }
 
-        private void fillCategory()
+        private void FillCategory()
         {
             var categoryList = controllerCategory.GetAll();
             lbShowCategorys.Items.Clear();
@@ -38,7 +38,7 @@ namespace WinFormsApp
             }
         }
 
-        public void fillEpisodeBox()
+        public void FillEpisodeBox()
         {
             var thePod = lvPodInfo.SelectedItems[0].Text;
             if (lvPodInfo.SelectedItems.Count == 1)
@@ -55,7 +55,7 @@ namespace WinFormsApp
             }
         }
 
-        private void fillPodView()
+        private void FillPodView()
         {
             var podcastList = controllerPodcast.GetAll();
             lvPodInfo.Items.Clear();
@@ -80,8 +80,8 @@ namespace WinFormsApp
             try
             {
                 await controllerPodcast.CreatePodcast(tbPodName.Text, tbURL.Text, cbCategory.Text);
-                fillPodView();
-                clearAllFields();
+                FillPodView();
+                ClearAllFields();
             }
             catch (Exception)
             {
@@ -105,7 +105,7 @@ namespace WinFormsApp
                         foreach (Episode episode in pod.EpisodeList)
                         {
                             lbPodEpisode.Items.Add(episode.Name);
-                            fillEpisodeBox();
+                            FillEpisodeBox();
 
                         }
                     }
@@ -127,7 +127,7 @@ namespace WinFormsApp
             tbCategory.Clear();
 
             controllerCategory.GetAll();
-            fillCategory();
+            FillCategory();
 
         }
 
@@ -151,7 +151,7 @@ namespace WinFormsApp
             }
         }
 
-        private void clearAllFields()
+        private void ClearAllFields()
         {
             tbPodName.Clear();
             cbCategory.Text = "Välj Kategori";
@@ -167,8 +167,8 @@ namespace WinFormsApp
                 for (int i = lvPodInfo.SelectedItems.Count - 1; i >= 0; i--)
                 {
                     controllerPodcast.DeletePodcast(thePod);
-                    fillPodView();
-                    clearAllFields();   
+                    FillPodView();
+                    ClearAllFields();   
                 }
             }
             catch (Exception)
@@ -183,7 +183,7 @@ namespace WinFormsApp
             try
             {
                 controllerCategory.DeleteCategory(lbShowCategorys.SelectedItem.ToString());
-                fillCategory();
+                FillCategory();
             }
             catch (Exception)
             {
