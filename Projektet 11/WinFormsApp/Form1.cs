@@ -28,6 +28,9 @@ namespace WinFormsApp
             lbShowCategorys.Items.Clear();
             cbCategory.Items.Clear();
 
+            lbShowCategorys.Items.Add("Ospecificerat");
+            cbCategory.Items.Add("Ospecificerat");
+
             foreach (var category in categoryList)
             {
                 if (categoryList != null)
@@ -182,8 +185,19 @@ namespace WinFormsApp
         {
             try
             {
+                string selectedCategory = lbShowCategorys.SelectedItem.ToString();
+
+                foreach (ListViewItem item in lvPodInfo.Items)
+                {
+                    if (item.SubItems[1].Text == selectedCategory)
+                    {
+                        item.SubItems[1].Text = "Ospecificerat";
+                    }
+                }
+
                 controllerCategory.DeleteCategory(lbShowCategorys.SelectedItem.ToString());
                 FillCategory();
+
             }
             catch (Exception)
             {
