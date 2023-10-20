@@ -171,7 +171,7 @@ namespace WinFormsApp
                 {
                     controllerPodcast.DeletePodcast(thePod);
                     FillPodView();
-                    ClearAllFields();   
+                    ClearAllFields();
                 }
             }
             catch (Exception)
@@ -204,6 +204,26 @@ namespace WinFormsApp
             {
                 throw;
             }
+        }
+
+        private void btChangeCategory_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int selectedCategory = lbShowCategorys.SelectedIndex - 1;
+                Category category = new Category(tbCategory.Text.ToString());
+
+                if (selectedCategory >= 0)
+                {
+                    controllerCategory.UpdateCategory(selectedCategory, category);
+
+                }
+                tbCategory.Clear();
+                FillCategory();
+
+
+            }
+            catch (Exception) { throw; }
         }
     }
 
