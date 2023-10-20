@@ -7,15 +7,13 @@ namespace BLL
     {
         RepositoryPodcast repositoryPodcast;
         RepositoryEpisode repositoryEpisode;
-        List<Podcast> podcastList;
-
+        //List<Podcast> podcastList;
 
         public ControllerPodcast()
         {
             repositoryPodcast = new RepositoryPodcast();
             repositoryEpisode = new RepositoryEpisode();
-            podcastList = repositoryPodcast.GetAll();
-
+            //podcastList = repositoryPodcast.GetAll();
 
         }
 

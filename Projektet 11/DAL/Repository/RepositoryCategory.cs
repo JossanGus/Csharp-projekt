@@ -16,11 +16,11 @@ namespace DAL.Repository
         { 
             dataManager = new SerializerXML();
             categoryList = new List<Category>();
-            categoryList = GetAll();
+            //categoryList = GetAll();
         }
         public List<Category> GetAll()
         {
-            List<Category> categoryList = new List<Category>();
+            //List<Category> categoryList = new List<Category>();
 
             try
             {

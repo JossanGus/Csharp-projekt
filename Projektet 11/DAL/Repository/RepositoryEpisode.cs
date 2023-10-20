@@ -12,13 +12,13 @@ namespace DAL.Repository
 {
     public class RepositoryEpisode : IGetEpisode <Episode>
     {
-        SerializerXML dataManager;
+        //SerializerXML dataManager;
         List<Episode> episodeList;
 
         public RepositoryEpisode()
         {
             episodeList = new List<Episode>();
-            dataManager = new SerializerXML();
+            //dataManager = new SerializerXML();
         }
 
         public async Task<List<Episode>> AllEpisodes(string url)
@@ -27,7 +27,7 @@ namespace DAL.Repository
             XmlReader xmlReader = XmlReader.Create(url);
             SyndicationFeed feed = await Task.Run(() => SyndicationFeed.Load(xmlReader));
 
-            List<Episode> episodeList = new List<Episode>();
+            //List<Episode> episodeList = new List<Episode>();
 
             foreach (var item in feed.Items) 
             { 
