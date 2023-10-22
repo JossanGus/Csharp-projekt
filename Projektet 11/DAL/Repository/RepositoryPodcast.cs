@@ -19,7 +19,7 @@ namespace DAL.Repository
         {
             dataManager = new SerializerXML();
             podcastList = new List<Podcast>();
-            //podcastList = GetAll();
+            podcastList = GetAll();
         }
 
         public int GetIndex(string name)
@@ -29,7 +29,7 @@ namespace DAL.Repository
 
         public List<Podcast> GetAll()
         {
-            //List<Podcast> podcastList = new List<Podcast>();
+            List<Podcast> podcastList = new List<Podcast>();
 
             try
             {

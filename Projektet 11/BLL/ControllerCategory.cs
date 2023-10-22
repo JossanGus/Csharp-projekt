@@ -11,12 +11,12 @@ namespace BLL
     public class ControllerCategory
     {
         RepositoryCategory repositoryCategory;
-        //List<Category> categoryList;
+        List<Category> categoryList;
 
         public ControllerCategory()
         { 
             repositoryCategory = new RepositoryCategory();
-            //categoryList = repositoryCategory.GetAll();
+            categoryList = repositoryCategory.GetAll();
         }
 
         public void DeleteCategory(string name)
