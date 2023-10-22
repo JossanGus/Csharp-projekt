@@ -10,7 +10,7 @@ using System.ServiceModel.Syndication;
 
 namespace DAL.Repository
 {
-    public class RepositoryEpisode : IGetEpisode <Episode>
+    public class RepositoryEpisode/* : IGetEpisode <Episode>*/
     {
         //SerializerXML dataManager;
         List<Episode> episodeList;
