@@ -28,6 +28,7 @@ namespace WinFormsApp
             var categoryList = controllerCategory.GetAll();
             lbShowCategorys.Items.Clear();
             cbCategory.Items.Clear();
+            cbCategoryFilter.Items.Clear();
 
             lbShowCategorys.Items.Add("Ospecificerat");
             cbCategory.Items.Add("Ospecificerat");
