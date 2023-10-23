@@ -29,7 +29,7 @@ namespace DAL.Repository
 
             List<Episode> episodeList = new List<Episode>();
 
-            foreach (var item in feed.Items) 
+            foreach (SyndicationItem item in feed.Items) 
             { 
                 Episode episode = new Episode();
                 episode.Name = item.Title.Text;
