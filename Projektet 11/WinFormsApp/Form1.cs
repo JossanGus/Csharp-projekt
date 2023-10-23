@@ -2,6 +2,7 @@ using BLL;
 using Models;
 using DAL;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WinFormsApp
 {
@@ -37,6 +38,7 @@ namespace WinFormsApp
                 {
                     lbShowCategorys.Items.Add(category.Name);
                     cbCategory.Items.Add(category.Name);
+                    cbCategoryFilter.Items.Add(category.Name);
                 }
             }
         }
@@ -76,6 +78,8 @@ namespace WinFormsApp
                 }
             }
         }
+
+
 
         private async void btAddPod_Click(object sender, EventArgs e)
         {
@@ -212,10 +216,20 @@ namespace WinFormsApp
             {
                 int selectedCategory = lbShowCategorys.SelectedIndex - 1;
                 Category category = new Category(tbCategory.Text.ToString());
+                //string oldCategory = lbShowCategorys.SelectedItem.ToString();
+
+
 
                 if (selectedCategory >= 0)
                 {
                     controllerCategory.UpdateCategory(selectedCategory, category);
+                    //foreach(Podcast podcast in )
+                    //{
+                    //    if (podcast.Category == lbShowCategorys.SelectedItem.ToString()) 
+                    //    {
+                    //        podcast.Category = category;
+                    //    }
+                    //}
 
                 }
                 tbCategory.Clear();
@@ -224,6 +238,46 @@ namespace WinFormsApp
 
             }
             catch (Exception) { throw; }
+        }
+
+        private void btChangePod_Click(object sender, EventArgs e)
+        {
+            var selectedItem = lvPodInfo.SelectedItems[0];
+            int index = selectedItem.Index;
+
+            string name = tbPodName.Text;
+            string url = tbURL.Text;
+            string category = cbCategory.Text;
+
+            controllerPodcast.UpdatePodcast(index, name, url, category);
+            FillPodView();
+            tbURL.Clear();
+            tbPodName.Clear();
+
+        }
+
+        private void cbCategoryFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            var podcastList = controllerPodcast.GetAll();
+            string theCategory = cbCategoryFilter.SelectedItem.ToString();
+
+            var filteredPodcast = from thePod in podcastList
+                                  where thePod.Category.Equals(theCategory) //&& thePod != null
+                                  let episode = thePod.EpisodeList.Count.ToString()
+                                  let selectedCategory = new ListViewItem(thePod.Name)
+                                  select new { thePod, episode, selectedCategory };
+
+
+            lvPodInfo.Items.Clear();
+            foreach (var pod in filteredPodcast)
+            {
+                pod.selectedCategory.SubItems.Add(pod.thePod.Category);
+                pod.selectedCategory.SubItems.Add(pod.episode);
+
+                lvPodInfo.Items.Add(pod.selectedCategory);
+            }
+
         }
     }
 

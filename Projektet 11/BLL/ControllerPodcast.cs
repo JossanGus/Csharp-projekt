@@ -42,6 +42,30 @@ namespace BLL
             repositoryPodcast.Delete(index);
         }
 
+        public void UpdatePodcast(int thePod, string name, string url, string category)
+        {
+            var podcastLista = repositoryPodcast.GetAll();
+            Podcast pod = podcastLista[thePod];
+
+            pod.Name = name;
+            pod.Url = url;
+            pod.Category = category;
+
+            repositoryPodcast.Update(thePod, pod);
+        }
+
+        //public void UpdateCategoryPod(string podcastName, string newCategory)
+        //{
+        //    int index = repositoryPodcast.GetIndex(podcastName);
+        //    if(index >= 0)
+        //    {
+        //        Podcast podcast = repositoryPodcast.GetAll()[index];
+        //        podcast.Category = newCategory;
+        //        repositoryPodcast.Update(index, podcast);
+        //    }
+        //}
+
+
     }
 
 }
