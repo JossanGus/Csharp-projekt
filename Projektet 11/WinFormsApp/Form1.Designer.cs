@@ -56,10 +56,10 @@
             // 
             // btAddPod
             // 
-            btAddPod.Location = new Point(631, 161);
+            btAddPod.Location = new Point(492, 162);
             btAddPod.Margin = new Padding(2, 3, 2, 3);
             btAddPod.Name = "btAddPod";
-            btAddPod.Size = new Size(157, 33);
+            btAddPod.Size = new Size(178, 33);
             btAddPod.TabIndex = 0;
             btAddPod.Text = "Lägg till podd";
             btAddPod.UseVisualStyleBackColor = true;
@@ -68,7 +68,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(78, 124);
+            label1.Location = new Point(55, 74);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(91, 21);
@@ -77,7 +77,7 @@
             // 
             // tbPodName
             // 
-            tbPodName.Location = new Point(58, 161);
+            tbPodName.Location = new Point(55, 98);
             tbPodName.Margin = new Padding(2, 3, 2, 3);
             tbPodName.Name = "tbPodName";
             tbPodName.Size = new Size(151, 28);
@@ -86,7 +86,7 @@
             // cbCategory
             // 
             cbCategory.FormattingEnabled = true;
-            cbCategory.Location = new Point(229, 159);
+            cbCategory.Location = new Point(226, 96);
             cbCategory.Margin = new Padding(2, 3, 2, 3);
             cbCategory.Name = "cbCategory";
             cbCategory.Size = new Size(182, 29);
@@ -96,7 +96,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(470, 124);
+            label2.Location = new Point(447, 74);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
             label2.Size = new Size(100, 21);
@@ -105,7 +105,7 @@
             // 
             // tbURL
             // 
-            tbURL.Location = new Point(450, 161);
+            tbURL.Location = new Point(447, 98);
             tbURL.Margin = new Padding(2, 3, 2, 3);
             tbURL.Name = "tbURL";
             tbURL.Size = new Size(151, 28);
@@ -114,7 +114,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(120, 519);
+            label3.Location = new Point(122, 453);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(98, 21);
@@ -124,7 +124,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(401, 519);
+            label4.Location = new Point(403, 453);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
             label4.Size = new Size(152, 21);
@@ -134,7 +134,7 @@
             // lvPodInfo
             // 
             lvPodInfo.Columns.AddRange(new ColumnHeader[] { columnHeader2, columnHeader4, columnHeader1 });
-            lvPodInfo.Location = new Point(47, 225);
+            lvPodInfo.Location = new Point(44, 162);
             lvPodInfo.Margin = new Padding(2, 3, 2, 3);
             lvPodInfo.Name = "lvPodInfo";
             lvPodInfo.Size = new Size(435, 271);
@@ -165,7 +165,7 @@
             // 
             lbPodEpisode.FormattingEnabled = true;
             lbPodEpisode.ItemHeight = 21;
-            lbPodEpisode.Location = new Point(47, 548);
+            lbPodEpisode.Location = new Point(49, 482);
             lbPodEpisode.Margin = new Padding(2, 3, 2, 3);
             lbPodEpisode.Name = "lbPodEpisode";
             lbPodEpisode.Size = new Size(328, 193);
@@ -175,7 +175,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(762, 237);
+            label5.Location = new Point(768, 72);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
             label5.Size = new Size(151, 21);
@@ -184,7 +184,7 @@
             // 
             // tbCategory
             // 
-            tbCategory.Location = new Point(711, 277);
+            tbCategory.Location = new Point(768, 96);
             tbCategory.Margin = new Padding(2, 3, 2, 3);
             tbCategory.Name = "tbCategory";
             tbCategory.Size = new Size(232, 28);
@@ -192,7 +192,7 @@
             // 
             // btAddCategory
             // 
-            btAddCategory.Location = new Point(960, 273);
+            btAddCategory.Location = new Point(1017, 92);
             btAddCategory.Margin = new Padding(2, 3, 2, 3);
             btAddCategory.Name = "btAddCategory";
             btAddCategory.Size = new Size(158, 33);
@@ -205,7 +205,7 @@
             // 
             lbShowCategorys.FormattingEnabled = true;
             lbShowCategorys.ItemHeight = 21;
-            lbShowCategorys.Location = new Point(711, 323);
+            lbShowCategorys.Location = new Point(768, 142);
             lbShowCategorys.Margin = new Padding(2, 3, 2, 3);
             lbShowCategorys.Name = "lbShowCategorys";
             lbShowCategorys.Size = new Size(232, 130);
@@ -213,7 +213,7 @@
             // 
             // btChangeCategory
             // 
-            btChangeCategory.Location = new Point(960, 321);
+            btChangeCategory.Location = new Point(1017, 140);
             btChangeCategory.Margin = new Padding(2, 3, 2, 3);
             btChangeCategory.Name = "btChangeCategory";
             btChangeCategory.Size = new Size(153, 33);
@@ -224,7 +224,7 @@
             // 
             // btDeleteCategory
             // 
-            btDeleteCategory.Location = new Point(960, 369);
+            btDeleteCategory.Location = new Point(1017, 188);
             btDeleteCategory.Margin = new Padding(2, 3, 2, 3);
             btDeleteCategory.Name = "btDeleteCategory";
             btDeleteCategory.Size = new Size(153, 33);
@@ -235,10 +235,10 @@
             // 
             // btChangePod
             // 
-            btChangePod.Location = new Point(801, 161);
+            btChangePod.Location = new Point(492, 201);
             btChangePod.Margin = new Padding(2, 3, 2, 3);
             btChangePod.Name = "btChangePod";
-            btChangePod.Size = new Size(142, 33);
+            btChangePod.Size = new Size(178, 33);
             btChangePod.TabIndex = 17;
             btChangePod.Text = "Ändra podd";
             btChangePod.UseVisualStyleBackColor = true;
@@ -246,10 +246,10 @@
             // 
             // btDeletePod
             // 
-            btDeletePod.Location = new Point(960, 161);
+            btDeletePod.Location = new Point(492, 240);
             btDeletePod.Margin = new Padding(2, 3, 2, 3);
             btDeletePod.Name = "btDeletePod";
-            btDeletePod.Size = new Size(149, 33);
+            btDeletePod.Size = new Size(178, 33);
             btDeletePod.TabIndex = 18;
             btDeletePod.Text = "Ta bort pod";
             btDeletePod.UseVisualStyleBackColor = true;
@@ -258,10 +258,10 @@
             // cbCategoryFilter
             // 
             cbCategoryFilter.FormattingEnabled = true;
-            cbCategoryFilter.Location = new Point(218, 117);
+            cbCategoryFilter.Location = new Point(492, 288);
             cbCategoryFilter.Margin = new Padding(2, 3, 2, 3);
             cbCategoryFilter.Name = "cbCategoryFilter";
-            cbCategoryFilter.Size = new Size(217, 29);
+            cbCategoryFilter.Size = new Size(178, 29);
             cbCategoryFilter.TabIndex = 19;
             cbCategoryFilter.Text = "Filtrera poddkategori";
             cbCategoryFilter.SelectedIndexChanged += cbCategoryFilter_SelectedIndexChanged;
@@ -279,7 +279,7 @@
             // 
             // tbEpisodeInfo
             // 
-            tbEpisodeInfo.Location = new Point(401, 548);
+            tbEpisodeInfo.Location = new Point(403, 482);
             tbEpisodeInfo.Multiline = true;
             tbEpisodeInfo.Name = "tbEpisodeInfo";
             tbEpisodeInfo.ScrollBars = ScrollBars.Vertical;
@@ -291,7 +291,7 @@
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientActiveCaption;
-            ClientSize = new Size(1322, 801);
+            ClientSize = new Size(1322, 691);
             Controls.Add(tbEpisodeInfo);
             Controls.Add(label6);
             Controls.Add(cbCategoryFilter);
