@@ -3,6 +3,7 @@ using Models;
 using DAL;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Text.RegularExpressions;
 
 namespace WinFormsApp
 {
@@ -139,6 +140,14 @@ namespace WinFormsApp
 
         }
 
+        public static string FormatString(string value)
+        {
+            var step1 = Regex.Replace(value, @"<[^>]+>", "").Trim();
+            var step2 = Regex.Replace(step1, @"&nbsp;", " ");
+            var step3 = Regex.Replace(step2, @"\s{2,}", " ");
+
+            return step3;
+        }
         private void lbPodEpisode_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lbPodEpisode.SelectedItems.Count == 1)
@@ -151,7 +160,13 @@ namespace WinFormsApp
                     {
                         if (episode.Name.Equals(theEpisode))
                         {
-                            tbEpisodeInfo.Text = episode.Description;
+                            string htmlDescription = episode.Description;
+
+                            string cleanedDescription = FormatString(htmlDescription);
+
+                            tbEpisodeInfo.Text = cleanedDescription;
+
+                            //bEpisodeInfo.Text = episode.Description;
                         }
                     }
 
