@@ -21,16 +21,26 @@ namespace WinFormsApp
             controllerPodcast = new ControllerPodcast();
             controllerCategory = new ControllerCategory();
 
-            if (controllerCategory.GetAll().Count <= 0 ) 
+            //if (controllerCategory.GetAll().Count <= 0 ) 
+            //{
+            //    string Name = "Ospecificerat";
+            //    Category category = new Category(Name);
+            //    controllerCategory.CreateCategory(category);
+            //}
+
+            DefaultCategory();
+            FillCategory();
+            FillPodView();
+        }
+
+        private void DefaultCategory()
+        {
+            if (controllerCategory.GetAll().Count <= 0)
             {
                 string Name = "Ospecificerat";
                 Category category = new Category(Name);
                 controllerCategory.CreateCategory(category);
             }
-            
-
-            FillCategory();
-            FillPodView();
         }
 
         private void FillCategory()
@@ -220,10 +230,10 @@ namespace WinFormsApp
                 {
                     if (item.SubItems[1].Text == selectedCategory)
                     {
-                        item.SubItems[1].Text = "Ospecificerat";
+                        item.SubItems[1].Text = "Ospecificerat";    
+                        
                     }
                 }
-
 
                 controllerCategory.DeleteCategory(lbShowCategorys.SelectedItem.ToString());
                 FillCategory();
