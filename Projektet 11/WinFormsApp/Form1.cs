@@ -21,9 +21,13 @@ namespace WinFormsApp
             controllerPodcast = new ControllerPodcast();
             controllerCategory = new ControllerCategory();
 
-            string Name = "Ospecifiecerat";
-            Category category = new Category(Name);
-            controllerCategory.CreateCategory(category);
+            if (controllerCategory.GetAll().Count < 0 ) 
+            {
+                string Name = "Ospecifiecerat";
+                Category category = new Category(Name);
+                controllerCategory.CreateCategory(category);
+            }
+            
 
             FillCategory();
             FillPodView();
