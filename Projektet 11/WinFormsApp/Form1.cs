@@ -230,25 +230,31 @@ namespace WinFormsApp
         {
             try
             {
+                string newCategory = tbCategory.Text.ToString();
                 int selectedCategory = lbShowCategorys.SelectedIndex - 1;
-                Category category = new Category(tbCategory.Text.ToString());
-                //string oldCategory = lbShowCategorys.SelectedItem.ToString();
+                string oldCategory = lbShowCategorys.SelectedItem.ToString();
+                Category category = new Category(newCategory);
+                var podcastList = controllerPodcast.GetAll();
+
+                var changeCategoryPod = from thePod in podcastList
+                                        where thePod.Category.Equals(oldCategory)
+                                        select thePod;
 
 
 
                 if (selectedCategory >= 0)
                 {
-                    controllerCategory.UpdateCategory(selectedCategory, category);
-                    //foreach(Podcast podcast in )
-                    //{
-                    //    if (podcast.Category == lbShowCategorys.SelectedItem.ToString()) 
-                    //    {
-                    //        podcast.Category = category;
-                    //    }
-                    //}
+                    
+                    foreach (Podcast pod in changeCategoryPod)
+                    {
+                        controllerCategory.UpdateCategory(selectedCategory, category);
+                        controllerPodcast.UpdateCategoryPod(pod, newCategory);
+                    }
 
                 }
                 tbCategory.Clear();
+                lvPodInfo.Items.Clear();
+                FillPodView();
                 FillCategory();
 
 

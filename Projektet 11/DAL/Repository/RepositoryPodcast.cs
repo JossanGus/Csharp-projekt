@@ -65,17 +65,6 @@ namespace DAL.Repository
             SaveChanges();
         }
 
-        //public void UpdateCategoryPodcast(string name, string newCategory)
-        //{ 
-        //    int index = GetIndex(name);
-        //    if (index >= 0)
-        //    {
-        //        Podcast existingPodcast = podcastList[index];
-        //        existingPodcast.Category = newCategory;
-        //    } 
-        //SaveChanges();
-        //}
-
         public void SaveChanges()
         {
             dataManager.SerializePodcast(podcastList);
