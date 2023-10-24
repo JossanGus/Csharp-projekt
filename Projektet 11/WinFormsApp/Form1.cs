@@ -20,6 +20,11 @@ namespace WinFormsApp
             InitializeComponent();
             controllerPodcast = new ControllerPodcast();
             controllerCategory = new ControllerCategory();
+
+            string Name = "Ospecifiecerat";
+            Category category = new Category(Name);
+            controllerCategory.CreateCategory(category);
+
             FillCategory();
             FillPodView();
         }
@@ -31,8 +36,8 @@ namespace WinFormsApp
             cbCategory.Items.Clear();
             cbCategoryFilter.Items.Clear();
 
-            lbShowCategorys.Items.Add("Ospecificerat");
-            cbCategory.Items.Add("Ospecificerat");
+            //lbShowCategorys.Items.Add("Ospecificerat");
+            //cbCategory.Items.Add("Ospecificerat");
 
             foreach (var category in categoryList)
             {
@@ -135,7 +140,7 @@ namespace WinFormsApp
 
             tbCategory.Clear();
 
-            controllerCategory.GetAll();
+           // controllerCategory.GetAll();
             FillCategory();
 
         }
