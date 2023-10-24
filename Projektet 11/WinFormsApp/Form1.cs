@@ -21,9 +21,9 @@ namespace WinFormsApp
             controllerPodcast = new ControllerPodcast();
             controllerCategory = new ControllerCategory();
 
-            if (controllerCategory.GetAll().Count < 0 ) 
+            if (controllerCategory.GetAll().Count <= 0 ) 
             {
-                string Name = "Ospecifiecerat";
+                string Name = "Ospecificerat";
                 Category category = new Category(Name);
                 controllerCategory.CreateCategory(category);
             }
