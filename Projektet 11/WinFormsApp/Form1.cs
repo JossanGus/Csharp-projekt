@@ -45,9 +45,6 @@ namespace WinFormsApp
             cbCategory.Items.Clear();
             cbCategoryFilter.Items.Clear();
 
-            //lbShowCategorys.Items.Add("Ospecificerat");
-            //cbCategory.Items.Add("Ospecificerat");
-
             foreach (var category in categoryList)
             {
                 if (categoryList != null)
@@ -125,6 +122,9 @@ namespace WinFormsApp
                             lbPodEpisode.Items.Add(episode.Name);
 
                         }
+
+                        tbPodName.Text = pod.Name;
+                        tbURL.Text = pod.Url;
                         cbCategory.Text = pod.Category;
                     }
                 }

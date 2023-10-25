@@ -12,13 +12,12 @@ namespace DAL.Repository
 {
     public class RepositoryEpisode : IGetEpisode <Episode>
     {
-        //SerializerXML dataManager;
         List<Episode> episodeList;
 
         public RepositoryEpisode()
         {
             episodeList = new List<Episode>();
-            //dataManager = new SerializerXML();
+         
         }
 
         public async Task<List<Episode>> AllEpisodes(string url)
@@ -29,12 +28,12 @@ namespace DAL.Repository
 
             List<Episode> episodeList = new List<Episode>();
 
-            foreach (SyndicationItem item in feed.Items) 
-            { 
+            foreach (SyndicationItem item in feed.Items)
+            {
                 Episode episode = new Episode();
                 episode.Name = item.Title.Text;
                 episode.Description = item.Summary.Text;
-                
+
                 episodeList.Add(episode);
             }
             return episodeList;
