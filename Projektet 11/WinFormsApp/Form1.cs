@@ -105,7 +105,7 @@ namespace WinFormsApp
 
             try
             {
-                if (validation.IsEmpty(podName) && validation.CheckURL(podURL) && validation.IsEmpty(podCategory)) 
+                if (validation.NotEmpty(podName) && validation.CheckURL(podURL) && validation.NotEmpty(podCategory)) 
                 { 
                 await controllerPodcast.CreatePodcast(podName, podURL, podCategory);
                 FillPodView();
@@ -158,7 +158,7 @@ namespace WinFormsApp
             string Name = tbCategory.Text;
 
 
-            if (validation.IsEmpty(Name))
+            if (validation.NotEmpty(Name))
             {
                 Category category = new Category(Name);
 

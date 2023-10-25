@@ -9,14 +9,14 @@ namespace BLL
     public class validation
     {
 
-        public Boolean IsEmpty(string text) 
+        public Boolean NotEmpty(string text) 
         {
-            Boolean result = false;
+            Boolean result = true;
 
             if (string.IsNullOrEmpty(text))
             {
                 // felmedelande
-                result = true;
+                result = false;
 
             }
 
@@ -28,11 +28,11 @@ namespace BLL
         
         {
 
-            Boolean result = false;
-            if (url.StartsWith("http://") && !string.IsNullOrEmpty(url))
+            Boolean result = true;
+            if (!url.StartsWith("https://") && string.IsNullOrEmpty(url))
             {
                 //felmedelande
-                result = true;
+                result = false;
             }
             return result;
         }
