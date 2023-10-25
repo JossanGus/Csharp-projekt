@@ -59,23 +59,6 @@ namespace WinFormsApp
             }
         }
 
-        public async Task FillEpisodeBox()
-        {
-            var thePod = lvPodInfo.SelectedItems[0].Text;
-            if (lvPodInfo.SelectedItems.Count == 1)
-            {
-                var podList = controllerPodcast.GetAll();
-                foreach (Podcast pod in podList)
-                {
-                    if (pod.Name.Equals(thePod))
-                    {
-                        tbPodName.Text = pod.Name;
-                        tbURL.Text = pod.Url;
-                    }
-                }
-            }
-        }
-
         private void FillPodView()
         {
             var podcastList = controllerPodcast.GetAll();
@@ -140,7 +123,6 @@ namespace WinFormsApp
                         foreach (Episode episode in pod.EpisodeList)
                         {
                             lbPodEpisode.Items.Add(episode.Name);
-                            //FillEpisodeBox();
 
                         }
                         cbCategory.Text = pod.Category;
@@ -164,7 +146,6 @@ namespace WinFormsApp
 
                 controllerCategory.CreateCategory(category);
                 tbCategory.Clear();
-                // controllerCategory.GetAll();
                 FillCategory();
 
             }
@@ -200,8 +181,6 @@ namespace WinFormsApp
                             string cleanedDescription = FormatString(htmlDescription);
 
                             tbEpisodeInfo.Text = cleanedDescription;
-
-                            //bEpisodeInfo.Text = episode.Description;
                         }
                     }
 

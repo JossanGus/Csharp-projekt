@@ -37,28 +37,6 @@ namespace DAL
 
         }
 
-        //public async Task<List<Podcast>> DeserializePodcastAsync()
-        //{
-        //    try
-        //    {
-        //        List<Podcast> returned;
-        //        XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Podcast>));
-
-        //        using (FileStream fileStreamIn = new FileStream("Podcast.xml", FileMode.Open, FileAccess.Read))
-        //        {
-        //            returned = (List<Podcast>)await Task.Run(() => xmlSerializer.Deserialize(fileStreamIn));
-        //        }
-
-        //        return returned;
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw;
-        //    }
-    
-
-
-
         public void SerializeCategory(List<Category> items)
         {
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Category>));
@@ -90,38 +68,6 @@ namespace DAL
                 throw;
             }
         }
-
-
-
-        //public void SerializeEpisode(List<Episode> items)
-        //{
-        //    XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Episode>));
-        //    using (FileStream fileStreamOut = new FileStream("Episodes.xml", FileMode.Create, FileAccess.Write))
-        //    {
-        //        xmlSerializer.Serialize(fileStreamOut, items);
-        //    }
-
-        //}
-
-        //public List<Episode> DeserializeEpisodes()
-        //{
-        //    try
-        //    {
-        //        List<Episode> returned;
-        //        XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Episode>));
-        //        using (FileStream fileStreamIn = new FileStream("Episodes.xml", FileMode.Open, FileAccess.Read))
-        //        {
-        //            returned = (List<Episode>)xmlSerializer.Deserialize(fileStreamIn);
-        //        }
-
-        //        return returned;
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw;
-        //    }
-
-        //}
 
     }
 }
