@@ -251,7 +251,7 @@ namespace WinFormsApp
             try
             {
                 string newCategory = tbCategory.Text.ToString();
-                int selectedCategory = lbShowCategorys.SelectedIndex - 1;
+                int selectedCategory = lbShowCategorys.SelectedIndex;
                 string oldCategory = lbShowCategorys.SelectedItem.ToString();
                 Category category = new Category(newCategory);
                 var podcastList = controllerPodcast.GetAll();
@@ -264,10 +264,10 @@ namespace WinFormsApp
 
                 if (selectedCategory >= 0)
                 {
+                    controllerCategory.UpdateCategory(selectedCategory, category);
 
                     foreach (Podcast pod in changeCategoryPod)
                     {
-                        controllerCategory.UpdateCategory(selectedCategory, category);
                         controllerPodcast.UpdateCategoryPod(pod, newCategory);
                     }
 
