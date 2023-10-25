@@ -11,6 +11,7 @@ namespace WinFormsApp
     {
         ControllerPodcast controllerPodcast;
         ControllerCategory controllerCategory;
+        validation validation;
 
         string thePod;
 
@@ -20,6 +21,7 @@ namespace WinFormsApp
             InitializeComponent();
             controllerPodcast = new ControllerPodcast();
             controllerCategory = new ControllerCategory();
+            validation = new validation();
 
             DefaultCategory();
             FillCategory();
@@ -97,12 +99,22 @@ namespace WinFormsApp
 
         private async void btAddPod_Click(object sender, EventArgs e)
         {
+            string podName = tbPodName.Text;
+            string podURL = tbURL.Text;
+            string podCategory = cbCategory.Text;
 
             try
             {
-                await controllerPodcast.CreatePodcast(tbPodName.Text, tbURL.Text, cbCategory.Text);
+                if (validation.IsEmpty(podName) && validation.CheckURL(podURL) && validation.IsEmpty(podCategory)) 
+                { 
+                await controllerPodcast.CreatePodcast(podName, podURL, podCategory);
                 FillPodView();
                 ClearAllFields();
+                }
+                else
+                {
+                    MessageBox.Show("Ett eller flera fält är ej korrekt ifyllda");
+                }
             }
             catch (Exception)
             {
@@ -145,13 +157,21 @@ namespace WinFormsApp
         {
             string Name = tbCategory.Text;
 
-            Category category = new Category(Name);
-            controllerCategory.CreateCategory(category);
 
-            tbCategory.Clear();
+            if (validation.IsEmpty(Name))
+            {
+                Category category = new Category(Name);
 
-            // controllerCategory.GetAll();
-            FillCategory();
+                controllerCategory.CreateCategory(category);
+                tbCategory.Clear();
+                // controllerCategory.GetAll();
+                FillCategory();
+
+            }
+            else
+            {
+                MessageBox.Show("Fält får ej va tomt");
+            }
 
         }
 
