@@ -57,7 +57,7 @@ namespace WinFormsApp
             }
         }
 
-        public void FillEpisodeBox()
+        public async Task FillEpisodeBox()
         {
             var thePod = lvPodInfo.SelectedItems[0].Text;
             if (lvPodInfo.SelectedItems.Count == 1)
@@ -110,7 +110,7 @@ namespace WinFormsApp
             }
         }
 
-        private void lvPodInfo_SelectedIndexChanged(object sender, EventArgs e)
+        private async void lvPodInfo_SelectedIndexChanged(object sender, EventArgs e)
         {
 
             lbPodEpisode.Items.Clear();
@@ -118,6 +118,8 @@ namespace WinFormsApp
             if (lvPodInfo.SelectedItems.Count == 1)
             {
                 thePod = lvPodInfo.SelectedItems[0].Text;
+                
+
 
                 foreach (Podcast pod in controllerPodcast.GetAll())
                 {
@@ -126,9 +128,10 @@ namespace WinFormsApp
                         foreach (Episode episode in pod.EpisodeList)
                         {
                             lbPodEpisode.Items.Add(episode.Name);
-                            FillEpisodeBox();
+                            await FillEpisodeBox();
 
                         }
+                        cbCategory.Text = pod.Category;
                     }
                 }
 
@@ -147,7 +150,7 @@ namespace WinFormsApp
 
             tbCategory.Clear();
 
-           // controllerCategory.GetAll();
+            // controllerCategory.GetAll();
             FillCategory();
 
         }
@@ -193,6 +196,7 @@ namespace WinFormsApp
             tbURL.Clear();
             tbEpisodeInfo.Clear();
             lbPodEpisode.Items.Clear();
+            cbCategoryFilter.Text = "Filtrera podcast";
         }
 
         private void btDeletePod_Click(object sender, EventArgs e)
@@ -224,9 +228,9 @@ namespace WinFormsApp
                     if (item.SubItems[1].Text == selectedCategory)
                     {
                         var pod = item.SubItems[1];
-                        
+
                         pod.Text = lbShowCategorys.Items[0].ToString();
-                        
+
                     }
                 }
 
@@ -258,7 +262,7 @@ namespace WinFormsApp
 
                 if (selectedCategory >= 0)
                 {
-                    
+
                     foreach (Podcast pod in changeCategoryPod)
                     {
                         controllerCategory.UpdateCategory(selectedCategory, category);
@@ -316,7 +320,11 @@ namespace WinFormsApp
 
         }
 
-
+        private void btRensaListan_Click(object sender, EventArgs e)
+        {
+            ClearAllFields();
+            FillPodView();
+        }
     }
 
 }

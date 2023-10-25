@@ -52,6 +52,7 @@
             cbCategoryFilter = new ComboBox();
             label6 = new Label();
             tbEpisodeInfo = new TextBox();
+            btRensaListan = new Button();
             SuspendLayout();
             // 
             // btAddPod
@@ -286,12 +287,24 @@
             tbEpisodeInfo.Size = new Size(535, 193);
             tbEpisodeInfo.TabIndex = 21;
             // 
+            // btRensaListan
+            // 
+            btRensaListan.Location = new Point(492, 335);
+            btRensaListan.Margin = new Padding(2, 3, 2, 3);
+            btRensaListan.Name = "btRensaListan";
+            btRensaListan.Size = new Size(178, 33);
+            btRensaListan.TabIndex = 22;
+            btRensaListan.Text = "Rensa listan";
+            btRensaListan.UseVisualStyleBackColor = true;
+            btRensaListan.Click += btRensaListan_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientActiveCaption;
             ClientSize = new Size(1322, 691);
+            Controls.Add(btRensaListan);
             Controls.Add(tbEpisodeInfo);
             Controls.Add(label6);
             Controls.Add(cbCategoryFilter);
@@ -347,5 +360,6 @@
         private ColumnHeader columnHeader4;
         private Label label6;
         private TextBox tbEpisodeInfo;
+        private Button btRensaListan;
     }
 }

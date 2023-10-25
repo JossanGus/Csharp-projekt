@@ -22,13 +22,13 @@ namespace DAL
             try
             {
                 List<Podcast> returned;
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Podcast>));
-            using (FileStream fileStreamIn = new FileStream("Podcast.xml", FileMode.Open, FileAccess.Read))
-            {
-                returned = (List<Podcast>)xmlSerializer.Deserialize(fileStreamIn);
-            }
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Podcast>));
+                using (FileStream fileStreamIn = new FileStream("Podcast.xml", FileMode.Open, FileAccess.Read))
+                {
+                    returned = (List<Podcast>)xmlSerializer.Deserialize(fileStreamIn);
+                }
 
-            return returned;
+                return returned;
             }
             catch (Exception)
             {
@@ -36,6 +36,27 @@ namespace DAL
             }
 
         }
+
+        //public async Task<List<Podcast>> DeserializePodcastAsync()
+        //{
+        //    try
+        //    {
+        //        List<Podcast> returned;
+        //        XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Podcast>));
+
+        //        using (FileStream fileStreamIn = new FileStream("Podcast.xml", FileMode.Open, FileAccess.Read))
+        //        {
+        //            returned = (List<Podcast>)await Task.Run(() => xmlSerializer.Deserialize(fileStreamIn));
+        //        }
+
+        //        return returned;
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+    
+
 
 
         public void SerializeCategory(List<Category> items)
