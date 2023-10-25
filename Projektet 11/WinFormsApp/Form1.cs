@@ -262,7 +262,7 @@ namespace WinFormsApp
 
 
 
-                if (selectedCategory >= 0)
+                if (validation.NotEmpty(newCategory) &&  selectedCategory >= 0)
                 {
                     controllerCategory.UpdateCategory(selectedCategory, category);
 
@@ -272,6 +272,7 @@ namespace WinFormsApp
                     }
 
                 }
+                else { MessageBox.Show("Fält får ej va tomma"); }
                 tbCategory.Clear();
                 lvPodInfo.Items.Clear();
                 FillPodView();
