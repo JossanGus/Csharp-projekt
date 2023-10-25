@@ -21,13 +21,6 @@ namespace WinFormsApp
             controllerPodcast = new ControllerPodcast();
             controllerCategory = new ControllerCategory();
 
-            //if (controllerCategory.GetAll().Count <= 0 ) 
-            //{
-            //    string Name = "Ospecificerat";
-            //    Category category = new Category(Name);
-            //    controllerCategory.CreateCategory(category);
-            //}
-
             DefaultCategory();
             FillCategory();
             FillPodView();
@@ -230,7 +223,9 @@ namespace WinFormsApp
                 {
                     if (item.SubItems[1].Text == selectedCategory)
                     {
-                        item.SubItems[1].Text = "Ospecificerat";    
+                        var pod = item.SubItems[1];
+                        
+                        pod.Text = lbShowCategorys.Items[0].ToString();
                         
                     }
                 }
