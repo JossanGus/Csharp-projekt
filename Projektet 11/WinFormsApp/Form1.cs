@@ -140,7 +140,7 @@ namespace WinFormsApp
                         foreach (Episode episode in pod.EpisodeList)
                         {
                             lbPodEpisode.Items.Add(episode.Name);
-                            await FillEpisodeBox();
+                            //FillEpisodeBox();
 
                         }
                         cbCategory.Text = pod.Category;
@@ -241,21 +241,24 @@ namespace WinFormsApp
         {
             try
             {
-                string selectedCategory = lbShowCategorys.SelectedItem.ToString();
+                var podcastList = controllerPodcast.GetAll();
+                string oldCategory = lbShowCategorys.SelectedItem.ToString();
+                string defaultCategory = lbShowCategorys.Items[0].ToString();
 
-                foreach (ListViewItem item in lvPodInfo.Items)
+                var defaultCategoryPod = from thePod in podcastList
+                                        where thePod.Category.Equals(oldCategory)
+                                        select thePod; 
+
+                foreach (Podcast pod in defaultCategoryPod)
                 {
-                    if (item.SubItems[1].Text == selectedCategory)
-                    {
-                        var pod = item.SubItems[1];
-
-                        pod.Text = lbShowCategorys.Items[0].ToString();
-
-                    }
+                    
+                    controllerPodcast.UpdateCategoryPod(pod, defaultCategory);
                 }
 
                 controllerCategory.DeleteCategory(lbShowCategorys.SelectedItem.ToString());
                 FillCategory();
+                lvPodInfo.Items.Clear();
+                FillPodView();
 
             }
             catch (Exception)
