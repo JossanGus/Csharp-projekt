@@ -45,21 +45,31 @@ namespace WinFormsApp
             cbCategory.Items.Clear();
             cbCategoryFilter.Items.Clear();
 
-            foreach (var category in categoryList)
+            try
             {
-                if (categoryList != null)
+
+                foreach (var category in categoryList)
                 {
-                    lbShowCategorys.Items.Add(category.Name);
-                    cbCategory.Items.Add(category.Name);
-                    cbCategoryFilter.Items.Add(category.Name);
+                    if (categoryList != null)
+                    {
+                        lbShowCategorys.Items.Add(category.Name);
+                        cbCategory.Items.Add(category.Name);
+                        cbCategoryFilter.Items.Add(category.Name);
+                    }
                 }
             }
-        }
+            catch (Exception)
+            {
 
+            }
+        }
         private void FillPodView()
         {
             var podcastList = controllerPodcast.GetAll();
             lvPodInfo.Items.Clear();
+
+            try { 
+
             foreach (var pod in podcastList)
             {
                 if (podcastList != null)
@@ -72,6 +82,12 @@ namespace WinFormsApp
 
                     lvPodInfo.Refresh();
                 }
+            }
+
+            }
+            catch (Exception)
+            {
+
             }
         }
 
@@ -107,11 +123,12 @@ namespace WinFormsApp
 
             lbPodEpisode.Items.Clear();
             tbEpisodeInfo.Clear();
+
+            try { 
+
             if (lvPodInfo.SelectedItems.Count == 1)
             {
                 thePod = lvPodInfo.SelectedItems[0].Text;
-                
-
 
                 foreach (Podcast pod in controllerPodcast.GetAll())
                 {
@@ -133,12 +150,18 @@ namespace WinFormsApp
 
 
         }
+            catch (Exception)
+            {
+
+            }
+        }
 
 
         private void btAddCategory_Click(object sender, EventArgs e)
         {
             string Name = tbCategory.Text;
 
+            try { 
 
             if (validation.NotEmpty(Name))
             {
@@ -154,6 +177,11 @@ namespace WinFormsApp
                 MessageBox.Show("Fält får ej va tomt");
             }
 
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         public static string FormatString(string value)
@@ -166,6 +194,7 @@ namespace WinFormsApp
         }
         private void lbPodEpisode_SelectedIndexChanged(object sender, EventArgs e)
         {
+            try { 
             if (lbPodEpisode.SelectedItems.Count == 1)
             {
                 var theEpisode = lbPodEpisode.SelectedItems[0];
@@ -185,6 +214,11 @@ namespace WinFormsApp
                     }
 
                 }
+            }
+        }
+            catch (Exception)
+            {
+
             }
         }
 
