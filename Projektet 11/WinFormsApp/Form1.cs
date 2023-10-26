@@ -246,6 +246,7 @@ namespace WinFormsApp
             tbEpisodeInfo.Clear();
             lbPodEpisode.Items.Clear();
             cbCategoryFilter.Text = "Filtrera podcast";
+            cbCategory.Text = "";
         }
 
         private void btDeletePod_Click(object sender, EventArgs e)
