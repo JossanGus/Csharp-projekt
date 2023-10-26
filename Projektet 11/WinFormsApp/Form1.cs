@@ -241,7 +241,6 @@ namespace WinFormsApp
         private void ClearAllFields()
         {
             tbPodName.Clear();
-            //cbCategory.Text = "Välj Kategori";
             tbURL.Clear();
             tbEpisodeInfo.Clear();
             lbPodEpisode.Items.Clear();
@@ -252,8 +251,8 @@ namespace WinFormsApp
         {
             try
             {
-                string valdPod = lvPodInfo.SelectedItems[0].Text;
-                DialogResult answer = MessageBox.Show("Är du säker på att du vill radera " + valdPod + "?", "Radera podcast", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                string selectedPod = lvPodInfo.SelectedItems[0].Text;
+                DialogResult answer = MessageBox.Show("Är du säker på att du vill radera " + selectedPod + "?", "Radera podcast", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (answer == DialogResult.Yes)
                 {
@@ -264,12 +263,8 @@ namespace WinFormsApp
                         FillPodView();
                         ClearAllFields();
                     }
-                    MessageBox.Show(valdPod + " har nu tagits bort.");
+                    MessageBox.Show(selectedPod + " har nu tagits bort.");
                 }
-               
-
-
-               
             }
             catch (Exception)
             {
@@ -290,11 +285,8 @@ namespace WinFormsApp
                                          where thePod.Category.Equals(oldCategory)
                                          select thePod;
 
-                
 
-                //string selectedCategory = lbShowCategorys.SelectedItems[0].Text;
                 DialogResult answer = MessageBox.Show("Är du säker på att du vill radera " + oldCategory + "?", "Radera podcast", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
                 if (answer == DialogResult.Yes)
                 {
 
@@ -313,9 +305,6 @@ namespace WinFormsApp
                     MessageBox.Show(oldCategory + " har nu tagits bort. De poddar som tidigare tillhörde " + oldCategory + " har nu lagts till i kategorin Ospecificerade.");
 
                 }
-
-                
-
             }
             catch (Exception)
             {
