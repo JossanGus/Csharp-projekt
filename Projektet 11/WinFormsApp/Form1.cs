@@ -4,6 +4,7 @@ using DAL;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Text.RegularExpressions;
+using System.Security.Policy;
 
 namespace WinFormsApp
 {
@@ -125,9 +126,9 @@ namespace WinFormsApp
                     MessageBox.Show("Ett eller flera fält är ej korrekt ifyllda. Kontrollera att inga fält är tomma och webbaddressen är korrekt");
                 }
             }
-            catch (Exception)
+            catch (Exceptions ex)
             {
-
+                ex.ExceptionHandler(podName, podURL, podCategory);
             }
         }
 
@@ -164,9 +165,9 @@ namespace WinFormsApp
 
 
             }
-            catch (Exception)
+            catch (Exceptions ex)
             {
-
+                ex.ExceptionHandler(lvPodInfo.SelectedItems.ToString());
             }
         }
 
@@ -232,9 +233,9 @@ namespace WinFormsApp
                     }
                 }
             }
-            catch (Exception)
+            catch (Exceptions ex)
             {
-
+                ex.ExceptionHandler(lvPodInfo.SelectedItems.ToString());
             }
         }
 
@@ -266,11 +267,10 @@ namespace WinFormsApp
                     MessageBox.Show(selectedPod + " har nu tagits bort.");
                 }
             }
-            catch (Exception)
+            catch (Exceptions ex)
             {
-                throw;
+                ex.ExceptionHandler(lvPodInfo.SelectedItems.ToString());
             }
-
         }
 
         private void btDeleteCategory_Click(object sender, EventArgs e)
@@ -362,6 +362,8 @@ namespace WinFormsApp
             FillPodView();
             tbURL.Clear();
             tbPodName.Clear();
+
+            MessageBox.Show("Dina ändringar har sparats!");
 
         }
 

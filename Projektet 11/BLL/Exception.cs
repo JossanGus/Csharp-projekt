@@ -6,16 +6,27 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    //public class FileNotFoundException : Exception
-    //{
+    public class Exceptions : Exception
+    {
+        public Exceptions(string meddelande) : base(meddelande)
+        {
 
-    //  public  FileNotFoundException (string message) : base(message) 
-    //    {
-    //        MessageBox.Show(message);
-    //    }
+        }
+        public void ExceptionHandler(string name, string url, string category)
+        {
+            if (name == null && url == null && category == null)
+            {
+                throw new ArgumentNullException();
+            }
+        }
 
+        public void ExceptionHandler(string parameter)
+        {
+            if (parameter == null)
+            {
+                throw new ArgumentNullException();
+            }
+        }
 
-
-
-    //}
+    }
 }
