@@ -106,7 +106,7 @@ namespace WinFormsApp
             try
             {
 
-                if (validation.NotEmpty(podName) && validation.CheckURL(podURL) && validation.CbSelected(cbIndex) && validation.URLDuplicate(podURL, allaPoddar))
+                if (validation.NotEmpty(podName) && validation.CheckURL(podURL) && validation.CbSelected(cbIndex) && !validation.URLDuplicate(podURL, allaPoddar))
                 {
                     await controllerPodcast.CreatePodcast(podName, podURL, podCategory);
                     FillPodView();
@@ -116,7 +116,7 @@ namespace WinFormsApp
                 {
                     MessageBox.Show("Du måste välja en kategori");
                 }
-                else if (!validation.URLDuplicate(podURL, allaPoddar))
+                else if (validation.URLDuplicate(podURL, allaPoddar))
                 {
                     MessageBox.Show("Podden finns redan");
                 }

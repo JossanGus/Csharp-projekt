@@ -44,9 +44,10 @@ namespace BLL
           
             foreach (var pod in list)
             {
-                if (pod.Url == url) 
+                if (pod.Url.Equals(url)) 
                 { 
                     result = true;
+                    break;
                 }
             }
 
