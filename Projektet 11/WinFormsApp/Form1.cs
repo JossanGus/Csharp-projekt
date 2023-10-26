@@ -11,7 +11,7 @@ namespace WinFormsApp
     {
         ControllerPodcast controllerPodcast;
         ControllerCategory controllerCategory;
-        validation validation;
+        Validation validation;
 
         string thePod;
 
@@ -21,7 +21,7 @@ namespace WinFormsApp
             InitializeComponent();
             controllerPodcast = new ControllerPodcast();
             controllerCategory = new ControllerCategory();
-            validation = new validation();
+            validation = new Validation();
 
             DefaultCategory();
             FillCategory();
@@ -68,21 +68,22 @@ namespace WinFormsApp
             var podcastList = controllerPodcast.GetAll();
             lvPodInfo.Items.Clear();
 
-            try { 
-
-            foreach (var pod in podcastList)
+            try
             {
-                if (podcastList != null)
-                {
-                    string countEpisodes = pod.EpisodeList.Count.ToString();
-                    ListViewItem list = new ListViewItem(pod.Name);
-                    list.SubItems.Add(pod.Category);
-                    list.SubItems.Add(countEpisodes);
-                    lvPodInfo.Items.Add(list);
 
-                    lvPodInfo.Refresh();
+                foreach (var pod in podcastList)
+                {
+                    if (podcastList != null)
+                    {
+                        string countEpisodes = pod.EpisodeList.Count.ToString();
+                        ListViewItem list = new ListViewItem(pod.Name);
+                        list.SubItems.Add(pod.Category);
+                        list.SubItems.Add(countEpisodes);
+                        lvPodInfo.Items.Add(list);
+
+                        lvPodInfo.Refresh();
+                    }
                 }
-            }
 
             }
             catch (Exception)
@@ -98,14 +99,26 @@ namespace WinFormsApp
             string podName = tbPodName.Text;
             string podURL = tbURL.Text;
             string podCategory = cbCategory.Text;
+            int cbIndex = cbCategory.SelectedIndex;
+            List<Podcast> allaPoddar = controllerPodcast.GetAll();
+
 
             try
             {
-                if (validation.NotEmpty(podName) && validation.CheckURL(podURL) && validation.NotEmpty(podCategory)) 
-                { 
-                await controllerPodcast.CreatePodcast(podName, podURL, podCategory);
-                FillPodView();
-                ClearAllFields();
+
+                if (validation.NotEmpty(podName) && validation.CheckURL(podURL) && validation.CbSelected(cbIndex) && validation.URLDuplicate(podURL, allaPoddar))
+                {
+                    await controllerPodcast.CreatePodcast(podName, podURL, podCategory);
+                    FillPodView();
+                    ClearAllFields();
+                }
+                else if (!validation.CbSelected(cbIndex))
+                {
+                    MessageBox.Show("Du måste välja en kategori");
+                }
+                else if (!validation.URLDuplicate(podURL, allaPoddar))
+                {
+                    MessageBox.Show("Podden finns redan");
                 }
                 else
                 {
@@ -124,32 +137,33 @@ namespace WinFormsApp
             lbPodEpisode.Items.Clear();
             tbEpisodeInfo.Clear();
 
-            try { 
-
-            if (lvPodInfo.SelectedItems.Count == 1)
+            try
             {
-                thePod = lvPodInfo.SelectedItems[0].Text;
 
-                foreach (Podcast pod in controllerPodcast.GetAll())
+                if (lvPodInfo.SelectedItems.Count == 1)
                 {
-                    if (pod.Name.Equals(thePod))
+                    thePod = lvPodInfo.SelectedItems[0].Text;
+
+                    foreach (Podcast pod in controllerPodcast.GetAll())
                     {
-                        foreach (Episode episode in pod.EpisodeList)
+                        if (pod.Name.Equals(thePod))
                         {
-                            lbPodEpisode.Items.Add(episode.Name);
+                            foreach (Episode episode in pod.EpisodeList)
+                            {
+                                lbPodEpisode.Items.Add(episode.Name);
 
+                            }
+
+                            tbPodName.Text = pod.Name;
+                            tbURL.Text = pod.Url;
+                            cbCategory.Text = pod.Category;
                         }
-
-                        tbPodName.Text = pod.Name;
-                        tbURL.Text = pod.Url;
-                        cbCategory.Text = pod.Category;
                     }
+
                 }
 
+
             }
-
-
-        }
             catch (Exception)
             {
 
@@ -161,21 +175,22 @@ namespace WinFormsApp
         {
             string Name = tbCategory.Text;
 
-            try { 
-
-            if (validation.NotEmpty(Name))
+            try
             {
-                Category category = new Category(Name);
 
-                controllerCategory.CreateCategory(category);
-                tbCategory.Clear();
-                FillCategory();
+                if (validation.NotEmpty(Name))
+                {
+                    Category category = new Category(Name);
 
-            }
-            else
-            {
-                MessageBox.Show("Fält får ej va tomt");
-            }
+                    controllerCategory.CreateCategory(category);
+                    tbCategory.Clear();
+                    FillCategory();
+
+                }
+                else
+                {
+                    MessageBox.Show("Fält får ej va tomt");
+                }
 
             }
             catch (Exception)
@@ -194,28 +209,29 @@ namespace WinFormsApp
         }
         private void lbPodEpisode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try { 
-            if (lbPodEpisode.SelectedItems.Count == 1)
+            try
             {
-                var theEpisode = lbPodEpisode.SelectedItems[0];
-
-                foreach (var pod in controllerPodcast.GetAll())
+                if (lbPodEpisode.SelectedItems.Count == 1)
                 {
-                    foreach (var episode in pod.EpisodeList)
+                    var theEpisode = lbPodEpisode.SelectedItems[0];
+
+                    foreach (var pod in controllerPodcast.GetAll())
                     {
-                        if (episode.Name.Equals(theEpisode))
+                        foreach (var episode in pod.EpisodeList)
                         {
-                            string htmlDescription = episode.Description;
+                            if (episode.Name.Equals(theEpisode))
+                            {
+                                string htmlDescription = episode.Description;
 
-                            string cleanedDescription = FormatString(htmlDescription);
+                                string cleanedDescription = FormatString(htmlDescription);
 
-                            tbEpisodeInfo.Text = cleanedDescription;
+                                tbEpisodeInfo.Text = cleanedDescription;
+                            }
                         }
-                    }
 
+                    }
                 }
             }
-        }
             catch (Exception)
             {
 
@@ -225,7 +241,7 @@ namespace WinFormsApp
         private void ClearAllFields()
         {
             tbPodName.Clear();
-            cbCategory.Text = "Välj Kategori";
+            //cbCategory.Text = "Välj Kategori";
             tbURL.Clear();
             tbEpisodeInfo.Clear();
             lbPodEpisode.Items.Clear();
@@ -259,12 +275,12 @@ namespace WinFormsApp
                 string defaultCategory = lbShowCategorys.Items[0].ToString();
 
                 var defaultCategoryPod = from thePod in podcastList
-                                        where thePod.Category.Equals(oldCategory)
-                                        select thePod; 
+                                         where thePod.Category.Equals(oldCategory)
+                                         select thePod;
 
                 foreach (Podcast pod in defaultCategoryPod)
                 {
-                    
+
                     controllerPodcast.UpdateCategoryPod(pod, defaultCategory);
                 }
 
@@ -296,7 +312,7 @@ namespace WinFormsApp
 
 
 
-                if (validation.NotEmpty(newCategory) &&  selectedCategory >= 0)
+                if (validation.NotEmpty(newCategory) && selectedCategory >= 0)
                 {
                     controllerCategory.UpdateCategory(selectedCategory, category);
 

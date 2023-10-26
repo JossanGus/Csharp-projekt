@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class validation
+    public class Validation
     {
 
         public Boolean NotEmpty(string text) 
@@ -29,7 +30,7 @@ namespace BLL
         {
 
             Boolean result = true;
-            if (!url.StartsWith("https://") && string.IsNullOrEmpty(url))
+            if (!url.StartsWith("https://")) /*&& string.IsNullOrEmpty(url))*/
             {
                 //felmedelande
                 result = false;
@@ -37,17 +38,35 @@ namespace BLL
             return result;
         }
 
-        public Boolean URLDuplicate(string url, string category)
+        public Boolean URLDuplicate(string url, List<Podcast> list)
+        {
+            Boolean result = false;
+          
+            foreach (var pod in list)
+            {
+                if (pod.Url == url) 
+                { 
+                    result = true;
+                }
+            }
+
+                //om en pod har samma url och kategori - nej. om pod samma url annan kategori - ja.
+
+                return result;
+        }
+
+        public Boolean CbSelected(int i)
         {
             Boolean result = false;
 
-
-            //om en pod har samma url och kategori - nej. om pod samma url annan kategori - ja.
+            if (i >= 0)
+            {
+                result = true;
+            }
 
             return result;
         }
 
-        
 
 
 
