@@ -51,8 +51,6 @@ namespace BLL
                 }
             }
 
-                //om en pod har samma url och kategori - nej. om pod samma url annan kategori - ja.
-
                 return result;
         }
 

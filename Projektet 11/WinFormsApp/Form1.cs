@@ -122,7 +122,7 @@ namespace WinFormsApp
                 }
                 else
                 {
-                    MessageBox.Show("Ett eller flera fält är ej korrekt ifyllda");
+                    MessageBox.Show("Ett eller flera fält är ej korrekt ifyllda. Kontrollera att inga fält är tomma och webbaddressen är korrekt");
                 }
             }
             catch (Exception)
@@ -252,12 +252,24 @@ namespace WinFormsApp
         {
             try
             {
-                for (int i = lvPodInfo.SelectedItems.Count - 1; i >= 0; i--)
+                string valdPod = lvPodInfo.SelectedItems[0].Text;
+                DialogResult answer = MessageBox.Show("Är du säker på att du vill radera " + valdPod + "?", "Radera podcast", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (answer == DialogResult.Yes)
                 {
-                    controllerPodcast.DeletePodcast(thePod);
-                    FillPodView();
-                    ClearAllFields();
+
+                    for (int i = lvPodInfo.SelectedItems.Count - 1; i >= 0; i--)
+                    {
+                        controllerPodcast.DeletePodcast(thePod);
+                        FillPodView();
+                        ClearAllFields();
+                    }
+                    MessageBox.Show(valdPod + " har nu tagits bort.");
                 }
+               
+
+
+               
             }
             catch (Exception)
             {
@@ -278,16 +290,31 @@ namespace WinFormsApp
                                          where thePod.Category.Equals(oldCategory)
                                          select thePod;
 
-                foreach (Podcast pod in defaultCategoryPod)
+                
+
+                //string selectedCategory = lbShowCategorys.SelectedItems[0].Text;
+                DialogResult answer = MessageBox.Show("Är du säker på att du vill radera " + oldCategory + "?", "Radera podcast", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (answer == DialogResult.Yes)
                 {
 
-                    controllerPodcast.UpdateCategoryPod(pod, defaultCategory);
+                    foreach (Podcast pod in defaultCategoryPod)
+                    {
+
+                        controllerPodcast.UpdateCategoryPod(pod, defaultCategory);
+                    }
+
+                    
+                    controllerCategory.DeleteCategory(lbShowCategorys.SelectedItem.ToString());
+                    FillCategory();
+                    lvPodInfo.Items.Clear();
+                    FillPodView();
+
+                    MessageBox.Show(oldCategory + " har nu tagits bort. De poddar som tidigare tillhörde " + oldCategory + " har nu lagts till i kategorin Ospecificerade.");
+
                 }
 
-                controllerCategory.DeleteCategory(lbShowCategorys.SelectedItem.ToString());
-                FillCategory();
-                lvPodInfo.Items.Clear();
-                FillPodView();
+                
 
             }
             catch (Exception)
