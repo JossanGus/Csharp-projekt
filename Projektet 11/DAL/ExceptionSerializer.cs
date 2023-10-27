@@ -6,7 +6,19 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    internal class ExceptionSerializer
+    public class ExceptionSerializer : Exception
     {
+        private string fileName;
+        public string FileName
+        {
+            get
+            {
+                return fileName;
+            }
+        }
+        public ExceptionSerializer(string fileName, string message) : base(message)
+        {
+            this.fileName = fileName;
+        }
     }
 }
