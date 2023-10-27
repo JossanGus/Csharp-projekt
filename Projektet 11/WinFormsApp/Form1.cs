@@ -109,6 +109,7 @@ namespace WinFormsApp
 
                 if (validation.NotEmpty(podName) && validation.CheckURL(podURL) && validation.CbSelected(cbIndex) && !validation.URLDuplicate(podURL, allaPoddar))
                 {
+                    await Task.Delay(3000);
                     await controllerPodcast.CreatePodcast(podName, podURL, podCategory);
                     FillPodView();
                     ClearAllFields();
