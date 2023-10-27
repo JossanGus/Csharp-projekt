@@ -16,9 +16,7 @@ namespace BLL
 
             if (string.IsNullOrEmpty(text))
             {
-                // felmedelande
                 result = false;
-
             }
 
             return result;
@@ -30,9 +28,8 @@ namespace BLL
         {
 
             Boolean result = true;
-            if (!url.StartsWith("https://")) /*&& string.IsNullOrEmpty(url))*/
+            if (!url.StartsWith("https://")) 
             {
-                //felmedelande
                 result = false;
             }
             return result;
@@ -65,19 +62,6 @@ namespace BLL
 
             return result;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     }
