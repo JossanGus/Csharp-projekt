@@ -10,7 +10,6 @@ namespace BLL
 {
     public class ControllerEpisode : IGetEpisode<Episode>
     {
-        //private IGetEpisode<Episode> repositoryEpisode;
         private RepositoryEpisode repositoryEpisode;
 
         public ControllerEpisode()
@@ -22,6 +21,7 @@ namespace BLL
         {
             return await repositoryEpisode.AllEpisodes(url);
         }
+
     }
 }
  

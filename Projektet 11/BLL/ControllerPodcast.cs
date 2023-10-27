@@ -24,17 +24,12 @@ namespace BLL
 
         public async Task<Podcast> CreatePodcast(string name, string url, string category)
         {
-            Podcast pod = new Podcast();
-            await Task.Run(async () =>
-            {
-                List<Episode> episodeList = await repositoryEpisode.AllEpisodes(url);
-
-                Podcast podcast = new Podcast(name, url, category, episodeList);
-                repositoryPodcast.Create(podcast);
-            });
-
-            return pod;
+            List<Episode> episodeList = await repositoryEpisode.AllEpisodes(url);
+            Podcast podcast = new Podcast(name, url, category, episodeList);
+            repositoryPodcast.Create(podcast);
+            return podcast;
         }
+
 
         public void DeletePodcast(string name)
         {

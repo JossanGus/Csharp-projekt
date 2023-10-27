@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Text.RegularExpressions;
 using System.Security.Policy;
+using DAL.Repository;
 
 namespace WinFormsApp
 {
@@ -22,6 +23,7 @@ namespace WinFormsApp
             InitializeComponent();
             controllerPodcast = new ControllerPodcast();
             controllerCategory = new ControllerCategory();
+
             validation = new Validation();
 
             DefaultCategory();
@@ -93,8 +95,6 @@ namespace WinFormsApp
             }
         }
 
-
-
         private async void btAddPod_Click(object sender, EventArgs e)
         {
             string podName = tbPodName.Text;
@@ -133,7 +133,7 @@ namespace WinFormsApp
             }
         }
 
-        private async void lvPodInfo_SelectedIndexChanged(object sender, EventArgs e)
+        private void lvPodInfo_SelectedIndexChanged(object sender, EventArgs e)
         {
 
             lbPodEpisode.Items.Clear();
@@ -172,7 +172,7 @@ namespace WinFormsApp
             }
         }
 
-
+  
         private void btAddCategory_Click(object sender, EventArgs e)
         {
             string Name = tbCategory.Text;
@@ -288,7 +288,7 @@ namespace WinFormsApp
                                          select thePod;
 
 
-                DialogResult answer = MessageBox.Show("Är du säker på att du vill radera " + oldCategory + "?", "Radera podcast", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult answer = MessageBox.Show("Är du säker på att du vill radera " + oldCategory + "?", "Radera kategori", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (answer == DialogResult.Yes)
                 {
 

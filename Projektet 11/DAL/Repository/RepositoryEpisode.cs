@@ -22,7 +22,6 @@ namespace DAL.Repository
 
         public async Task<List<Episode>> AllEpisodes(string url)
         {
-
             XmlReader xmlReader = XmlReader.Create(url);
             SyndicationFeed feed = await Task.Run(() => SyndicationFeed.Load(xmlReader));
 
