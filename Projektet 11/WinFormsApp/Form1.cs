@@ -269,6 +269,11 @@ namespace WinFormsApp
                                          where thePod.Category.Equals(oldCategory)
                                          select thePod;
 
+                if(lbShowCategorys.SelectedIndex == 0)
+                {
+                    MessageBox.Show("Denna kategori kan ej tas bort.");
+                }
+                else { 
 
                 DialogResult answer = MessageBox.Show("Är du säker på att du vill radera " + oldCategory + "?", "Radera kategori", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (answer == DialogResult.Yes)
@@ -288,6 +293,7 @@ namespace WinFormsApp
 
                     MessageBox.Show(oldCategory + " har nu tagits bort. De poddar som tidigare tillhörde " + oldCategory + " har nu lagts till i kategorin Ospecificerade.");
 
+                }
                 }
             }
             catch (Exceptions ex)
@@ -311,7 +317,11 @@ namespace WinFormsApp
                                         select thePod;
 
 
-
+                if (lbShowCategorys.SelectedIndex == 0)
+                {
+                    MessageBox.Show("Denna kategori kan ej ändras.");
+                }
+                else { 
                 if (validation.NotEmpty(newCategory) && selectedCategory >= 0)
                 {
                     controllerCategory.UpdateCategory(selectedCategory, category);
@@ -327,7 +337,7 @@ namespace WinFormsApp
                 lvPodInfo.Items.Clear();
                 FillPodView();
                 FillCategory();
-
+                }
 
             }
             catch (Exceptions ex) 
