@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Models;
 
+
 namespace DAL.Repository
 {
     public class RepositoryCategory : IRepository<Category>
@@ -26,9 +27,9 @@ namespace DAL.Repository
             {
                 categoryList = dataManager.DeserializeCategory();
             }
-            catch (Exception)
+            catch (ExceptionSerializer error)
             {
-                
+                Console.WriteLine(error.Message + ". No list found");
             }
 
             return categoryList;

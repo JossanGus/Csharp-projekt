@@ -48,9 +48,6 @@ namespace WinFormsApp
             cbCategory.Items.Clear();
             cbCategoryFilter.Items.Clear();
 
-            try
-            {
-
                 foreach (var category in categoryList)
                 {
                     if (categoryList != null)
@@ -60,19 +57,11 @@ namespace WinFormsApp
                         cbCategoryFilter.Items.Add(category.Name);
                     }
                 }
-            }
-            catch (Exception)
-            {
-
-            }
         }
         private void FillPodView()
         {
             var podcastList = controllerPodcast.GetAll();
             lvPodInfo.Items.Clear();
-
-            try
-            {
 
                 foreach (var pod in podcastList)
                 {
@@ -87,12 +76,6 @@ namespace WinFormsApp
                         lvPodInfo.Refresh();
                     }
                 }
-
-            }
-            catch (Exception)
-            {
-
-            }
         }
 
         private async void btAddPod_Click(object sender, EventArgs e)
@@ -109,7 +92,6 @@ namespace WinFormsApp
 
                 if (validation.NotEmpty(podName) && validation.CheckURL(podURL) && validation.CbSelected(cbIndex) && !validation.URLDuplicate(podURL, allaPoddar))
                 {
-                    await Task.Delay(3000);
                     await controllerPodcast.CreatePodcast(podName, podURL, podCategory);
                     FillPodView();
                     ClearAllFields();
@@ -308,9 +290,9 @@ namespace WinFormsApp
 
                 }
             }
-            catch (Exception)
+            catch (Exceptions ex)
             {
-                throw;
+                ex.ExceptionHandler(lbShowCategorys.SelectedItem.ToString());
             }
         }
 
@@ -348,24 +330,34 @@ namespace WinFormsApp
 
 
             }
-            catch (Exception) { throw; }
+            catch (Exceptions ex) 
+            {
+               ex.ExceptionHandler(lbShowCategorys.SelectedItem.ToString());
+            }
         }
 
         private void btChangePod_Click(object sender, EventArgs e)
         {
-            var selectedItem = lvPodInfo.SelectedItems[0];
-            int index = selectedItem.Index;
+            try
+            {
+                var selectedItem = lvPodInfo.SelectedItems[0];
+                int index = selectedItem.Index;
 
-            string name = tbPodName.Text;
-            string url = tbURL.Text;
-            string category = cbCategory.Text;
+                string name = tbPodName.Text;
+                string url = tbURL.Text;
+                string category = cbCategory.Text;
 
-            controllerPodcast.UpdatePodcast(index, name, url, category);
-            FillPodView();
-            tbURL.Clear();
-            tbPodName.Clear();
+                controllerPodcast.UpdatePodcast(index, name, url, category);
+                FillPodView();
+                tbURL.Clear();
+                tbPodName.Clear();
 
-            MessageBox.Show("Dina ändringar har sparats!");
+                MessageBox.Show("Dina ändringar har sparats!");
+            }
+            catch (Exceptions ex) 
+            { 
+                ex.ExceptionHandler(lvPodInfo.SelectedItems.ToString());
+            }
 
         }
 

@@ -36,9 +36,9 @@ namespace DAL.Repository
                 podcastList = dataManager.DeserializePodcast();
             }
 
-            catch (Exception)
-            { 
-            
+            catch (ExceptionSerializer error)
+            {
+                Console.WriteLine(error.Message + ". No list found");
             }
 
             return podcastList;

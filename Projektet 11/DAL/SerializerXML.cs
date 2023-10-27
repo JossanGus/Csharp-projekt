@@ -9,10 +9,17 @@ namespace DAL
     {
         public void SerializePodcast(List<Podcast> items)
         {
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Podcast>));
-            using (FileStream fileStreamOut = new FileStream("Podcast.xml", FileMode.Create, FileAccess.Write))
+            try
             {
-                xmlSerializer.Serialize(fileStreamOut, items);
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Podcast>));
+                using (FileStream fileStreamOut = new FileStream("Podcast.xml", FileMode.Create, FileAccess.Write))
+                {
+                    xmlSerializer.Serialize(fileStreamOut, items);
+                }
+            }
+            catch (Exception)
+            {
+                throw new ExceptionSerializer("Podcast.xml", "could not deserialize");
             }
 
         }
@@ -32,17 +39,23 @@ namespace DAL
             }
             catch (Exception)
             {
-                throw;
+                throw new ExceptionSerializer("Podcast.xml", "could not deserialize");
             }
-
         }
 
         public void SerializeCategory(List<Category> items)
         {
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Category>));
-            using (FileStream fileStreamOut = new FileStream("Category.xml", FileMode.Create, FileAccess.Write))
+            try
             {
-                xmlSerializer.Serialize(fileStreamOut, items);
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Category>));
+                using (FileStream fileStreamOut = new FileStream("Category.xml", FileMode.Create, FileAccess.Write))
+                {
+                    xmlSerializer.Serialize(fileStreamOut, items);
+                }
+            }
+            catch (Exception)
+            {
+                throw new ExceptionSerializer("Category.xml", "could not deserialize");
             }
 
         }
@@ -60,12 +73,9 @@ namespace DAL
 
                 return returned;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //throw new ExceptionSerializer("Category.xml", "Fungerar inte");
-                Console.WriteLine("Fel vid deserialisering: " + ex.Message);
-
-                throw;
+                throw new ExceptionSerializer("Category.xml", "could not deserialize");
             }
         }
 
