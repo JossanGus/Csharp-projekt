@@ -169,7 +169,7 @@
             lbPodEpisode.Location = new Point(49, 482);
             lbPodEpisode.Margin = new Padding(2, 3, 2, 3);
             lbPodEpisode.Name = "lbPodEpisode";
-            lbPodEpisode.Size = new Size(328, 172);
+            lbPodEpisode.Size = new Size(328, 196);
             lbPodEpisode.TabIndex = 9;
             lbPodEpisode.SelectedIndexChanged += lbPodEpisode_SelectedIndexChanged;
             // 
@@ -262,7 +262,7 @@
             cbCategoryFilter.Location = new Point(492, 288);
             cbCategoryFilter.Margin = new Padding(2, 3, 2, 3);
             cbCategoryFilter.Name = "cbCategoryFilter";
-            cbCategoryFilter.Size = new Size(178, 32);
+            cbCategoryFilter.Size = new Size(216, 32);
             cbCategoryFilter.TabIndex = 19;
             cbCategoryFilter.Text = "Filtrera poddkategori";
             cbCategoryFilter.SelectedIndexChanged += cbCategoryFilter_SelectedIndexChanged;

@@ -48,34 +48,34 @@ namespace WinFormsApp
             cbCategory.Items.Clear();
             cbCategoryFilter.Items.Clear();
 
-                foreach (var category in categoryList)
+            foreach (var category in categoryList)
+            {
+                if (categoryList != null)
                 {
-                    if (categoryList != null)
-                    {
-                        lbShowCategorys.Items.Add(category.Name);
-                        cbCategory.Items.Add(category.Name);
-                        cbCategoryFilter.Items.Add(category.Name);
-                    }
+                    lbShowCategorys.Items.Add(category.Name);
+                    cbCategory.Items.Add(category.Name);
+                    cbCategoryFilter.Items.Add(category.Name);
                 }
+            }
         }
         private void FillPodView()
         {
             var podcastList = controllerPodcast.GetAll();
             lvPodInfo.Items.Clear();
 
-                foreach (var pod in podcastList)
+            foreach (var pod in podcastList)
+            {
+                if (podcastList != null)
                 {
-                    if (podcastList != null)
-                    {
-                        string countEpisodes = pod.EpisodeList.Count.ToString();
-                        ListViewItem list = new ListViewItem(pod.Name);
-                        list.SubItems.Add(pod.Category);
-                        list.SubItems.Add(countEpisodes);
-                        lvPodInfo.Items.Add(list);
+                    string countEpisodes = pod.EpisodeList.Count.ToString();
+                    ListViewItem list = new ListViewItem(pod.Name);
+                    list.SubItems.Add(pod.Category);
+                    list.SubItems.Add(countEpisodes);
+                    lvPodInfo.Items.Add(list);
 
-                        lvPodInfo.Refresh();
-                    }
+                    lvPodInfo.Refresh();
                 }
+            }
         }
 
         private async void btAddPod_Click(object sender, EventArgs e)
@@ -154,7 +154,7 @@ namespace WinFormsApp
             }
         }
 
-  
+
         private void btAddCategory_Click(object sender, EventArgs e)
         {
             string Name = tbCategory.Text;
@@ -269,31 +269,32 @@ namespace WinFormsApp
                                          where thePod.Category.Equals(oldCategory)
                                          select thePod;
 
-                if(lbShowCategorys.SelectedIndex == 0)
+                if (lbShowCategorys.SelectedIndex == 0)
                 {
                     MessageBox.Show("Denna kategori kan ej tas bort.");
                 }
-                else { 
-
-                DialogResult answer = MessageBox.Show("Är du säker på att du vill radera " + oldCategory + "?", "Radera kategori", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (answer == DialogResult.Yes)
+                else
                 {
 
-                    foreach (Podcast pod in defaultCategoryPod)
+                    DialogResult answer = MessageBox.Show("Är du säker på att du vill radera " + oldCategory + "?", "Radera kategori", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (answer == DialogResult.Yes)
                     {
 
-                        controllerPodcast.UpdateCategoryPod(pod, defaultCategory);
+                        foreach (Podcast pod in defaultCategoryPod)
+                        {
+
+                            controllerPodcast.UpdateCategoryPod(pod, defaultCategory);
+                        }
+
+
+                        controllerCategory.DeleteCategory(lbShowCategorys.SelectedItem.ToString());
+                        FillCategory();
+                        lvPodInfo.Items.Clear();
+                        FillPodView();
+
+                        MessageBox.Show(oldCategory + " har nu tagits bort. De poddar som tidigare tillhörde " + oldCategory + " har nu lagts till i kategorin Ospecificerade.");
+
                     }
-
-                    
-                    controllerCategory.DeleteCategory(lbShowCategorys.SelectedItem.ToString());
-                    FillCategory();
-                    lvPodInfo.Items.Clear();
-                    FillPodView();
-
-                    MessageBox.Show(oldCategory + " har nu tagits bort. De poddar som tidigare tillhörde " + oldCategory + " har nu lagts till i kategorin Ospecificerade.");
-
-                }
                 }
             }
             catch (Exceptions ex)
@@ -321,28 +322,29 @@ namespace WinFormsApp
                 {
                     MessageBox.Show("Denna kategori kan ej ändras.");
                 }
-                else { 
-                if (validation.NotEmpty(newCategory) && selectedCategory >= 0)
+                else
                 {
-                    controllerCategory.UpdateCategory(selectedCategory, category);
-
-                    foreach (Podcast pod in changeCategoryPod)
+                    if (validation.NotEmpty(newCategory) && selectedCategory >= 0)
                     {
-                        controllerPodcast.UpdateCategoryPod(pod, newCategory);
-                    }
+                        controllerCategory.UpdateCategory(selectedCategory, category);
 
-                }
-                else { MessageBox.Show("Fält får ej va tomma"); }
-                tbCategory.Clear();
-                lvPodInfo.Items.Clear();
-                FillPodView();
-                FillCategory();
+                        foreach (Podcast pod in changeCategoryPod)
+                        {
+                            controllerPodcast.UpdateCategoryPod(pod, newCategory);
+                        }
+
+                    }
+                    else { MessageBox.Show("Fält får ej va tomma"); }
+                    tbCategory.Clear();
+                    lvPodInfo.Items.Clear();
+                    FillPodView();
+                    FillCategory();
                 }
 
             }
-            catch (Exceptions ex) 
+            catch (Exceptions ex)
             {
-               ex.ExceptionHandler(lbShowCategorys.SelectedItem.ToString());
+                ex.ExceptionHandler(lbShowCategorys.SelectedItem.ToString());
             }
         }
 
@@ -364,8 +366,8 @@ namespace WinFormsApp
 
                 MessageBox.Show("Dina ändringar har sparats!");
             }
-            catch (Exceptions ex) 
-            { 
+            catch (Exceptions ex)
+            {
                 ex.ExceptionHandler(lvPodInfo.SelectedItems.ToString());
             }
 
