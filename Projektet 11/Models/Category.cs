@@ -13,8 +13,6 @@ namespace Models
         {
             Name = name;
         }
-
         public Category() { }
-
     }
 }

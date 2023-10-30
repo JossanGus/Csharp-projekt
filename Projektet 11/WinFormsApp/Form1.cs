@@ -378,7 +378,7 @@ namespace WinFormsApp
             string theCategory = cbCategoryFilter.SelectedItem.ToString();
 
             var filteredPodcast = from thePod in podcastList
-                                  where thePod.Category.Equals(theCategory) //&& thePod != null
+                                  where thePod.Category.Equals(theCategory)
                                   let episode = thePod.EpisodeList.Count.ToString()
                                   let selectedCategory = new ListViewItem(thePod.Name)
                                   select new { thePod, episode, selectedCategory };

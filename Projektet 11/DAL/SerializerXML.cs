@@ -78,6 +78,5 @@ namespace DAL
                 throw new ExceptionSerializer("Category.xml", "could not deserialize");
             }
         }
-
     }
 }
