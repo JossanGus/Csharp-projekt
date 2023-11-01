@@ -9,7 +9,7 @@ using DAL.Repository;
 
 namespace WinFormsApp
 {
-    public partial class Form1 : Form
+    public partial class StartUpPage : Form
     {
         ControllerPodcast controllerPodcast;
         ControllerCategory controllerCategory;
@@ -18,7 +18,7 @@ namespace WinFormsApp
         string thePod;
 
 
-        public Form1()
+        public StartUpPage()
         {
             InitializeComponent();
             controllerPodcast = new ControllerPodcast();
